@@ -9,12 +9,12 @@ import SwiftUI
 
 @main
 struct MinesweeperApp: App {
-    let persistenceController = PersistenceController.shared
+    var settings = GameSettings()
 
     var body: some Scene {
         WindowGroup {
             ContentView()
-                .environment(\.managedObjectContext, persistenceController.container.viewContext)
+                .environmentObject(Game(settings: settings))
         }
     }
 }
