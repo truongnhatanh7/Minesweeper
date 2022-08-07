@@ -11,7 +11,6 @@
 		556D4761289F9BC200D3C459 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 556D4760289F9BC200D3C459 /* ContentView.swift */; };
 		556D4763289F9BC700D3C459 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 556D4762289F9BC700D3C459 /* Assets.xcassets */; };
 		556D4766289F9BC700D3C459 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 556D4765289F9BC700D3C459 /* Preview Assets.xcassets */; };
-		556D476B289F9BC700D3C459 /* Minesweeper.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 556D4769289F9BC700D3C459 /* Minesweeper.xcdatamodeld */; };
 		556D4772289FA50E00D3C459 /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 556D4771289FA50E00D3C459 /* GameView.swift */; };
 		556D4774289FA5DB00D3C459 /* GameSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 556D4773289FA5DB00D3C459 /* GameSettings.swift */; };
 		556D4776289FA68B00D3C459 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 556D4775289FA68B00D3C459 /* Game.swift */; };
@@ -25,7 +24,6 @@
 		556D4760289F9BC200D3C459 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		556D4762289F9BC700D3C459 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		556D4765289F9BC700D3C459 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		556D476A289F9BC700D3C459 /* Minesweeper.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Minesweeper.xcdatamodel; sourceTree = "<group>"; };
 		556D4771289FA50E00D3C459 /* GameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameView.swift; sourceTree = "<group>"; };
 		556D4773289FA5DB00D3C459 /* GameSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameSettings.swift; sourceTree = "<group>"; };
 		556D4775289FA68B00D3C459 /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
@@ -71,7 +69,6 @@
 				556D4779289FA79B00D3C459 /* CellView.swift */,
 				556D4760289F9BC200D3C459 /* ContentView.swift */,
 				556D4762289F9BC700D3C459 /* Assets.xcassets */,
-				556D4769289F9BC700D3C459 /* Minesweeper.xcdatamodeld */,
 				556D4764289F9BC700D3C459 /* Preview Content */,
 			);
 			path = Minesweeper;
@@ -155,7 +152,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				556D476B289F9BC700D3C459 /* Minesweeper.xcdatamodeld in Sources */,
 				556D4776289FA68B00D3C459 /* Game.swift in Sources */,
 				556D4774289FA5DB00D3C459 /* GameSettings.swift in Sources */,
 				556D4761289F9BC200D3C459 /* ContentView.swift in Sources */,
@@ -363,19 +359,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCVersionGroup section */
-		556D4769289F9BC700D3C459 /* Minesweeper.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				556D476A289F9BC700D3C459 /* Minesweeper.xcdatamodel */,
-			);
-			currentVersion = 556D476A289F9BC700D3C459 /* Minesweeper.xcdatamodel */;
-			path = Minesweeper.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = 556D4753289F9BC200D3C459 /* Project object */;
 }

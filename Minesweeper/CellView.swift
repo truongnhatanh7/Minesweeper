@@ -9,6 +9,7 @@ import SwiftUI
 
 struct CellView: View {
     @EnvironmentObject var game: Game
+    @State private var fadeOut = false
     let cell: Cell
     
     var body: some View {
@@ -16,11 +17,28 @@ struct CellView: View {
             .resizable()
             .scaledToFill()
             .frame(width: game.settings.squareSize, height: game.settings.squareSize, alignment: .center)
+            .opacity(fadeOut ? 0 : 1)
+            .animation(.easeInOut(duration: 0.2), value: fadeOut)
             .onTapGesture {
-                game.click(cell: cell)
+                self.fadeOut.toggle()
+                
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+                    withAnimation {
+                        game.click(cell: cell)
+                        self.fadeOut.toggle()
+                    }
+                }
+                
             }
             .onLongPressGesture {
-                game.toggleFlag(cell: cell)
+                self.fadeOut.toggle()
+                
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+                    withAnimation {
+                        game.toggleFlag(cell: cell)
+                        self.fadeOut.toggle()
+                    }
+                }
             }
     }
 }

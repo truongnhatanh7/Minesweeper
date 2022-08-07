@@ -63,6 +63,12 @@ class Game: ObservableObject {
         self.objectWillChange.send()
     }
     
+    func checkGameCondition() {
+        if flagCount == settings.numBombs {
+            
+        }
+    }
+    
     private func getOpenedCount(cell: Cell) -> Int {
         let row = cell.row
         let col = cell.col
@@ -101,6 +107,7 @@ class Game: ObservableObject {
         
         cell.status = .opened(openedCount)
         cell.isOpened = true
+        score += 1
         
         // If empty -> keep exploring surroundings cells
         if openedCount == 0 {
@@ -115,7 +122,13 @@ class Game: ObservableObject {
         guard !cell.isOpened else {
             return
         }
-        cell.isFlagged = !cell.isFlagged
+        if (cell.isFlagged) {
+            flagCount -= 1
+            cell.isFlagged = false
+        } else {
+            flagCount += 1
+            cell.isFlagged = true
+        }
         self.objectWillChange.send()
     }
 }
