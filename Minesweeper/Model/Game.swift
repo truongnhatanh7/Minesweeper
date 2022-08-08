@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftUI
 import AudioToolbox
 
 class Game: ObservableObject {
@@ -31,7 +32,7 @@ class Game: ObservableObject {
 //        backgroundAudioManager.playSounds(soundfile: "gameBackground", type: ".mp3", repeatNum: -1)
     }
     
-    private static func initializeBoard(settings: GameSettings) -> [[Cell]] {
+    static func initializeBoard(settings: GameSettings) -> [[Cell]] {
         var newBoard = [[Cell]]()
         
         for row in 0..<settings.numRows {
@@ -52,6 +53,7 @@ class Game: ObservableObject {
                 currentBombs += 1;
             }
         }
+//        self.board = newBoard
         
         return newBoard
     }
@@ -60,8 +62,14 @@ class Game: ObservableObject {
         if cell.status == .bomb {
             audioManager.playSounds(soundfile: "bomb", type: ".mp3", repeatNum: 0)
             cell.isOpened = true
-            isLose = true
+//            isLose = true
+            for row in 0..<board.count {
+                for col in 0..<board[0].count {
+                    board[row][col].isOpened = true
+                }
+            }
             // TODO: Handle lose condition
+            
         } else {
             audioManager.playSounds(soundfile: "touch", type: ".wav", repeatNum: 0)
             revealCell(cell: cell)
@@ -149,5 +157,14 @@ class Game: ObservableObject {
             cell.isFlagged = true
         }
         self.objectWillChange.send()
+    }
+    
+    func playAgain() {
+//        self.initializeBoard(settings: settings)
+        self.board = Game.initializeBoard(settings: self.settings)
+        self.score = 0
+        self.flagCount = 0
+        self.isWin = false
+        self.isLose = false
     }
 }
