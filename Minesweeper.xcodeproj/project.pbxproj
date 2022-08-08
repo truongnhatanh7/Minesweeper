@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		551BF42B28A0E387008F1343 /* bomb.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 551BF42A28A0E387008F1343 /* bomb.mp3 */; };
+		551BF42D28A0E38C008F1343 /* flag.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 551BF42C28A0E38C008F1343 /* flag.mp3 */; };
 		556D475F289F9BC200D3C459 /* MinesweeperApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 556D475E289F9BC200D3C459 /* MinesweeperApp.swift */; };
 		556D4761289F9BC200D3C459 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 556D4760289F9BC200D3C459 /* ContentView.swift */; };
 		556D4763289F9BC700D3C459 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 556D4762289F9BC700D3C459 /* Assets.xcassets */; };
@@ -16,9 +18,17 @@
 		556D4776289FA68B00D3C459 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 556D4775289FA68B00D3C459 /* Game.swift */; };
 		556D4778289FA6C400D3C459 /* Cell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 556D4777289FA6C400D3C459 /* Cell.swift */; };
 		556D477A289FA79B00D3C459 /* CellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 556D4779289FA79B00D3C459 /* CellView.swift */; };
+		556D477C28A0BEC100D3C459 /* WinView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 556D477B28A0BEC100D3C459 /* WinView.swift */; };
+		556D477E28A0BEC800D3C459 /* LoseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 556D477D28A0BEC800D3C459 /* LoseView.swift */; };
+		556D478228A0BF0D00D3C459 /* touch.wav in Resources */ = {isa = PBXBuildFile; fileRef = 556D478128A0BF0D00D3C459 /* touch.wav */; };
+		556D478428A0BF1C00D3C459 /* AudioManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 556D478328A0BF1C00D3C459 /* AudioManager.swift */; };
+		556D478628A0C11100D3C459 /* background1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 556D478528A0C11100D3C459 /* background1.mp3 */; };
+		556D478828A0D1D400D3C459 /* gameBackground.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 556D478728A0D1D400D3C459 /* gameBackground.mp3 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		551BF42A28A0E387008F1343 /* bomb.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = bomb.mp3; sourceTree = "<group>"; };
+		551BF42C28A0E38C008F1343 /* flag.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = flag.mp3; sourceTree = "<group>"; };
 		556D475B289F9BC200D3C459 /* Minesweeper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Minesweeper.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		556D475E289F9BC200D3C459 /* MinesweeperApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MinesweeperApp.swift; sourceTree = "<group>"; };
 		556D4760289F9BC200D3C459 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -29,6 +39,12 @@
 		556D4775289FA68B00D3C459 /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 		556D4777289FA6C400D3C459 /* Cell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cell.swift; sourceTree = "<group>"; };
 		556D4779289FA79B00D3C459 /* CellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellView.swift; sourceTree = "<group>"; };
+		556D477B28A0BEC100D3C459 /* WinView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WinView.swift; sourceTree = "<group>"; };
+		556D477D28A0BEC800D3C459 /* LoseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoseView.swift; sourceTree = "<group>"; };
+		556D478128A0BF0D00D3C459 /* touch.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = touch.wav; sourceTree = "<group>"; };
+		556D478328A0BF1C00D3C459 /* AudioManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioManager.swift; sourceTree = "<group>"; };
+		556D478528A0C11100D3C459 /* background1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = background1.mp3; sourceTree = "<group>"; };
+		556D478728A0D1D400D3C459 /* gameBackground.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = gameBackground.mp3; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -42,6 +58,28 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		551BF42E28A0E3E5008F1343 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				556D478328A0BF1C00D3C459 /* AudioManager.swift */,
+				556D4773289FA5DB00D3C459 /* GameSettings.swift */,
+				556D4775289FA68B00D3C459 /* Game.swift */,
+				556D4777289FA6C400D3C459 /* Cell.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		551BF42F28A0E3F1008F1343 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				556D4771289FA50E00D3C459 /* GameView.swift */,
+				556D477B28A0BEC100D3C459 /* WinView.swift */,
+				556D477D28A0BEC800D3C459 /* LoseView.swift */,
+				556D4779289FA79B00D3C459 /* CellView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		556D4752289F9BC200D3C459 = {
 			isa = PBXGroup;
 			children = (
@@ -61,12 +99,10 @@
 		556D475D289F9BC200D3C459 /* Minesweeper */ = {
 			isa = PBXGroup;
 			children = (
+				556D477F28A0BED400D3C459 /* Assets */,
 				556D475E289F9BC200D3C459 /* MinesweeperApp.swift */,
-				556D4771289FA50E00D3C459 /* GameView.swift */,
-				556D4773289FA5DB00D3C459 /* GameSettings.swift */,
-				556D4775289FA68B00D3C459 /* Game.swift */,
-				556D4777289FA6C400D3C459 /* Cell.swift */,
-				556D4779289FA79B00D3C459 /* CellView.swift */,
+				551BF42F28A0E3F1008F1343 /* View */,
+				551BF42E28A0E3E5008F1343 /* Model */,
 				556D4760289F9BC200D3C459 /* ContentView.swift */,
 				556D4762289F9BC700D3C459 /* Assets.xcassets */,
 				556D4764289F9BC700D3C459 /* Preview Content */,
@@ -80,6 +116,26 @@
 				556D4765289F9BC700D3C459 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		556D477F28A0BED400D3C459 /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				556D478028A0BEDC00D3C459 /* Sounds */,
+			);
+			path = Assets;
+			sourceTree = "<group>";
+		};
+		556D478028A0BEDC00D3C459 /* Sounds */ = {
+			isa = PBXGroup;
+			children = (
+				556D478128A0BF0D00D3C459 /* touch.wav */,
+				556D478528A0C11100D3C459 /* background1.mp3 */,
+				551BF42A28A0E387008F1343 /* bomb.mp3 */,
+				551BF42C28A0E38C008F1343 /* flag.mp3 */,
+				556D478728A0D1D400D3C459 /* gameBackground.mp3 */,
+			);
+			path = Sounds;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -141,7 +197,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				556D4766289F9BC700D3C459 /* Preview Assets.xcassets in Resources */,
+				556D478828A0D1D400D3C459 /* gameBackground.mp3 in Resources */,
+				551BF42B28A0E387008F1343 /* bomb.mp3 in Resources */,
 				556D4763289F9BC700D3C459 /* Assets.xcassets in Resources */,
+				556D478628A0C11100D3C459 /* background1.mp3 in Resources */,
+				556D478228A0BF0D00D3C459 /* touch.wav in Resources */,
+				551BF42D28A0E38C008F1343 /* flag.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -153,12 +214,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				556D4776289FA68B00D3C459 /* Game.swift in Sources */,
+				556D477C28A0BEC100D3C459 /* WinView.swift in Sources */,
 				556D4774289FA5DB00D3C459 /* GameSettings.swift in Sources */,
 				556D4761289F9BC200D3C459 /* ContentView.swift in Sources */,
 				556D4778289FA6C400D3C459 /* Cell.swift in Sources */,
 				556D475F289F9BC200D3C459 /* MinesweeperApp.swift in Sources */,
 				556D4772289FA50E00D3C459 /* GameView.swift in Sources */,
 				556D477A289FA79B00D3C459 /* CellView.swift in Sources */,
+				556D478428A0BF1C00D3C459 /* AudioManager.swift in Sources */,
+				556D477E28A0BEC800D3C459 /* LoseView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
