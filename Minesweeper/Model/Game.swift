@@ -18,6 +18,7 @@ class Game: ObservableObject {
     @Published var flagCount: Int
     @Published var isWin: Bool
     @Published var isLose: Bool
+//    @Published var isProcessing: Bool
     
     
     init (settings: GameSettings) {
@@ -27,6 +28,7 @@ class Game: ObservableObject {
         self.flagCount = 0
         self.isWin = false
         self.isLose = false
+//        self.isProcessing = false
         self.audioManager = AudioManager()
         self.backgroundAudioManager = AudioManager()
 //        backgroundAudioManager.playSounds(soundfile: "gameBackground", type: ".mp3", repeatNum: -1)
@@ -34,6 +36,7 @@ class Game: ObservableObject {
     
     static func initializeBoard(settings: GameSettings) -> [[Cell]] {
         var newBoard = [[Cell]]()
+        settings.isProcessing = true
         
         for row in 0..<settings.numRows {
             var column = [Cell]()
@@ -54,6 +57,7 @@ class Game: ObservableObject {
             }
         }
 //        self.board = newBoard
+        settings.isProcessing = false
         
         return newBoard
     }

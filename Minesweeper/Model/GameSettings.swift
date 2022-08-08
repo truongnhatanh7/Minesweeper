@@ -13,6 +13,7 @@ class GameSettings: ObservableObject {
     @Published var numRows = 10
     @Published var numCols = 10
     @Published var numBombs = 10
+    @Published var isProcessing = false
     
     var squareSize: CGFloat {
         // Screen width / cols = square size

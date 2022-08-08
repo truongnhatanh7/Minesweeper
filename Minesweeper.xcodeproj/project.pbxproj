@@ -10,6 +10,9 @@
 		551BF42B28A0E387008F1343 /* bomb.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 551BF42A28A0E387008F1343 /* bomb.mp3 */; };
 		551BF42D28A0E38C008F1343 /* flag.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 551BF42C28A0E38C008F1343 /* flag.mp3 */; };
 		551BF43128A0F3F3008F1343 /* ModeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 551BF43028A0F3F3008F1343 /* ModeView.swift */; };
+		551BF43328A107F3008F1343 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 551BF43228A107F3008F1343 /* HomeView.swift */; };
+		551BF43528A108E7008F1343 /* PreHomeLoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 551BF43428A108E7008F1343 /* PreHomeLoginView.swift */; };
+		551BF43728A108F5008F1343 /* PreHomeRegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 551BF43628A108F5008F1343 /* PreHomeRegisterView.swift */; };
 		556D475F289F9BC200D3C459 /* MinesweeperApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 556D475E289F9BC200D3C459 /* MinesweeperApp.swift */; };
 		556D4761289F9BC200D3C459 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 556D4760289F9BC200D3C459 /* ContentView.swift */; };
 		556D4763289F9BC700D3C459 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 556D4762289F9BC700D3C459 /* Assets.xcassets */; };
@@ -29,6 +32,9 @@
 		551BF42A28A0E387008F1343 /* bomb.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = bomb.mp3; sourceTree = "<group>"; };
 		551BF42C28A0E38C008F1343 /* flag.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = flag.mp3; sourceTree = "<group>"; };
 		551BF43028A0F3F3008F1343 /* ModeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModeView.swift; sourceTree = "<group>"; };
+		551BF43228A107F3008F1343 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		551BF43428A108E7008F1343 /* PreHomeLoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreHomeLoginView.swift; sourceTree = "<group>"; };
+		551BF43628A108F5008F1343 /* PreHomeRegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreHomeRegisterView.swift; sourceTree = "<group>"; };
 		556D475B289F9BC200D3C459 /* Minesweeper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Minesweeper.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		556D475E289F9BC200D3C459 /* MinesweeperApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MinesweeperApp.swift; sourceTree = "<group>"; };
 		556D4760289F9BC200D3C459 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -71,6 +77,9 @@
 			isa = PBXGroup;
 			children = (
 				556D4771289FA50E00D3C459 /* GameView.swift */,
+				551BF43428A108E7008F1343 /* PreHomeLoginView.swift */,
+				551BF43628A108F5008F1343 /* PreHomeRegisterView.swift */,
+				551BF43228A107F3008F1343 /* HomeView.swift */,
 				551BF43028A0F3F3008F1343 /* ModeView.swift */,
 				556D4779289FA79B00D3C459 /* CellView.swift */,
 			);
@@ -213,11 +222,14 @@
 				556D4776289FA68B00D3C459 /* Game.swift in Sources */,
 				556D4774289FA5DB00D3C459 /* GameSettings.swift in Sources */,
 				556D4761289F9BC200D3C459 /* ContentView.swift in Sources */,
+				551BF43328A107F3008F1343 /* HomeView.swift in Sources */,
+				551BF43728A108F5008F1343 /* PreHomeRegisterView.swift in Sources */,
 				556D4778289FA6C400D3C459 /* Cell.swift in Sources */,
 				551BF43128A0F3F3008F1343 /* ModeView.swift in Sources */,
 				556D475F289F9BC200D3C459 /* MinesweeperApp.swift in Sources */,
 				556D4772289FA50E00D3C459 /* GameView.swift in Sources */,
 				556D477A289FA79B00D3C459 /* CellView.swift in Sources */,
+				551BF43528A108E7008F1343 /* PreHomeLoginView.swift in Sources */,
 				556D478428A0BF1C00D3C459 /* AudioManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -39,14 +39,13 @@ struct ModeView: View {
         }
         .onAppear() {
             print("REC")
+            game.settings.isProcessing = true
         }
         .transition(.opacity)
         .onDisappear() {
             // TODO: wait for done init -> load view
             game.settings.numBombs = currentMode
             game.board = Game.initializeBoard(settings: game.settings)
-            
-
         }
     }
 }

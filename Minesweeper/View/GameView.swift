@@ -11,36 +11,73 @@ struct GameView: View {
     @EnvironmentObject var game: Game
     var body: some View {
         ZStack {
-            VStack(spacing: 0) {
-                Text("Total bombs: \(game.settings.numBombs)")
-                    .padding()
-                    .font(.title)
-                    .clipShape(Capsule())
-                    
-                HStack {
-                    Text("Score: \(game.score)")
+//            !game.settings.isProcessing ? (
+//                VStack(spacing: 0) {
+//                    Text("Total bombs: \(game.settings.numBombs)")
+//                        .padding()
+//                        .font(.title)
+//                        .clipShape(Capsule())
+//
+//                    HStack {
+//                        Text("Score: \(game.score)")
+//                            .padding()
+//                        Spacer()
+//                        Text("Flag: \(game.flagCount)")
+//                            .padding()
+//
+//                    }
+//                    ForEach(0..<game.board.count, id: \.self) { row in
+//                        HStack(spacing: 0) {
+//                            ForEach(0..<game.board[row].count, id: \.self) { col in
+//                                CellView(cell: game.board[row][col])
+//                            }
+//                        }
+//                    }
+//                }
+//                .onAppear() {
+//                    print("appear")
+//                }
+//                .transition(.opacity)
+//
+//            ) : (
+//                VStack {
+//                    Text("Loading...")
+//                }
+//            )
+            if !game.settings.isProcessing {
+                VStack(spacing: 0) {
+                    Text("Total bombs: \(game.settings.numBombs)")
                         .padding()
-                    Spacer()
-                    Text("Flag: \(game.flagCount)")
-                        .padding()
-                    
-                }
-                ForEach(0..<game.board.count, id: \.self) { row in
-                    HStack(spacing: 0) {
-                        ForEach(0..<game.board[row].count, id: \.self) { col in
-                            CellView(cell: game.board[row][col])
+                        .font(.title)
+                        .clipShape(Capsule())
+                        
+                    HStack {
+                        Text("Score: \(game.score)")
+                            .padding()
+                        Spacer()
+                        Text("Flag: \(game.flagCount)")
+                            .padding()
+                        
+                    }
+                    ForEach(0..<game.board.count, id: \.self) { row in
+                        HStack(spacing: 0) {
+                            ForEach(0..<game.board[row].count, id: \.self) { col in
+                                CellView(cell: game.board[row][col])
+                            }
                         }
                     }
                 }
-        }
-        .onAppear() {
-            print("appear")
+                .onAppear() {
+                    print("appear")
+                }
+                .transition(.opacity)
+            } else {
+                Text("Loading...")
+            }
+
+        
         }
         .transition(.opacity)
-        
-        
-        
-        }
         
     }
 }
