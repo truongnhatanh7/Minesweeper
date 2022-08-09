@@ -8,8 +8,23 @@
 import SwiftUI
 
 struct HomeView: View {
+    @State var viewManipulation: Int = 0
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        if viewManipulation == 0 {
+            PreHomeLoginView(viewManipulation: $viewManipulation)
+        } else if viewManipulation == 1 {
+            PreHomeRegisterView(viewManipulation: $viewManipulation)
+        } else {
+            TabView {
+                ModeView()
+                    .tabItem {
+                        Image(systemName: "gamecontroller")
+                        Text("Play")
+                    }
+                // TODO: Add leaderboard, how to play
+            }
+            
+        }
     }
 }
 

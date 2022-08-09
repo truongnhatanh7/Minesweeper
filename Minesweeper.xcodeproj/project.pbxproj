@@ -13,6 +13,10 @@
 		551BF43328A107F3008F1343 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 551BF43228A107F3008F1343 /* HomeView.swift */; };
 		551BF43528A108E7008F1343 /* PreHomeLoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 551BF43428A108E7008F1343 /* PreHomeLoginView.swift */; };
 		551BF43728A108F5008F1343 /* PreHomeRegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 551BF43628A108F5008F1343 /* PreHomeRegisterView.swift */; };
+		5543731D28A1734E004E4BEE /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 5543731C28A1734E004E4BEE /* Realm */; };
+		5543731F28A1734E004E4BEE /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 5543731E28A1734E004E4BEE /* RealmSwift */; };
+		5543732128A22800004E4BEE /* RealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5543732028A227FF004E4BEE /* RealmManager.swift */; };
+		5543732328A2286F004E4BEE /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5543732228A2286F004E4BEE /* User.swift */; };
 		556D475F289F9BC200D3C459 /* MinesweeperApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 556D475E289F9BC200D3C459 /* MinesweeperApp.swift */; };
 		556D4761289F9BC200D3C459 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 556D4760289F9BC200D3C459 /* ContentView.swift */; };
 		556D4763289F9BC700D3C459 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 556D4762289F9BC700D3C459 /* Assets.xcassets */; };
@@ -35,6 +39,8 @@
 		551BF43228A107F3008F1343 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		551BF43428A108E7008F1343 /* PreHomeLoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreHomeLoginView.swift; sourceTree = "<group>"; };
 		551BF43628A108F5008F1343 /* PreHomeRegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreHomeRegisterView.swift; sourceTree = "<group>"; };
+		5543732028A227FF004E4BEE /* RealmManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmManager.swift; sourceTree = "<group>"; };
+		5543732228A2286F004E4BEE /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		556D475B289F9BC200D3C459 /* Minesweeper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Minesweeper.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		556D475E289F9BC200D3C459 /* MinesweeperApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MinesweeperApp.swift; sourceTree = "<group>"; };
 		556D4760289F9BC200D3C459 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -56,6 +62,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5543731F28A1734E004E4BEE /* RealmSwift in Frameworks */,
+				5543731D28A1734E004E4BEE /* Realm in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -66,6 +74,8 @@
 			isa = PBXGroup;
 			children = (
 				556D478328A0BF1C00D3C459 /* AudioManager.swift */,
+				5543732028A227FF004E4BEE /* RealmManager.swift */,
+				5543732228A2286F004E4BEE /* User.swift */,
 				556D4773289FA5DB00D3C459 /* GameSettings.swift */,
 				556D4775289FA68B00D3C459 /* Game.swift */,
 				556D4777289FA6C400D3C459 /* Cell.swift */,
@@ -160,6 +170,10 @@
 			dependencies = (
 			);
 			name = Minesweeper;
+			packageProductDependencies = (
+				5543731C28A1734E004E4BEE /* Realm */,
+				5543731E28A1734E004E4BEE /* RealmSwift */,
+			);
 			productName = Minesweeper;
 			productReference = 556D475B289F9BC200D3C459 /* Minesweeper.app */;
 			productType = "com.apple.product-type.application";
@@ -188,6 +202,9 @@
 				Base,
 			);
 			mainGroup = 556D4752289F9BC200D3C459;
+			packageReferences = (
+				5543731B28A1734D004E4BEE /* XCRemoteSwiftPackageReference "realm-swift" */,
+			);
 			productRefGroup = 556D475C289F9BC200D3C459 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -219,11 +236,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5543732128A22800004E4BEE /* RealmManager.swift in Sources */,
 				556D4776289FA68B00D3C459 /* Game.swift in Sources */,
 				556D4774289FA5DB00D3C459 /* GameSettings.swift in Sources */,
 				556D4761289F9BC200D3C459 /* ContentView.swift in Sources */,
 				551BF43328A107F3008F1343 /* HomeView.swift in Sources */,
 				551BF43728A108F5008F1343 /* PreHomeRegisterView.swift in Sources */,
+				5543732328A2286F004E4BEE /* User.swift in Sources */,
 				556D4778289FA6C400D3C459 /* Cell.swift in Sources */,
 				551BF43128A0F3F3008F1343 /* ModeView.swift in Sources */,
 				556D475F289F9BC200D3C459 /* MinesweeperApp.swift in Sources */,
@@ -431,6 +450,30 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		5543731B28A1734D004E4BEE /* XCRemoteSwiftPackageReference "realm-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/realm/realm-swift.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		5543731C28A1734E004E4BEE /* Realm */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5543731B28A1734D004E4BEE /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = Realm;
+		};
+		5543731E28A1734E004E4BEE /* RealmSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5543731B28A1734D004E4BEE /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = RealmSwift;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 556D4753289F9BC200D3C459 /* Project object */;
 }

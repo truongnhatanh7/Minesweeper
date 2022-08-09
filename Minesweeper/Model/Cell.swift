@@ -6,6 +6,7 @@
 //
 import SwiftUI
 import Foundation
+import RealmSwift
 
 class Cell: ObservableObject {
     var row: Int

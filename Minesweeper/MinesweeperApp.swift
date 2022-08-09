@@ -6,9 +6,10 @@
 //
 
 import SwiftUI
+import RealmSwift
 
 @main
-struct MinesweeperApp: App {
+struct MinesweeperApp: SwiftUI.App {
     var settings = GameSettings()
 
     var body: some Scene {
