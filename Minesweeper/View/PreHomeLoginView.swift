@@ -11,6 +11,7 @@ struct PreHomeLoginView: View {
     @State var username: String = ""
     @State var password: String = ""
     @Binding var viewManipulation: Int
+    @EnvironmentObject var realmManager: RealmManager
     
     var body: some View {
         
@@ -38,7 +39,12 @@ struct PreHomeLoginView: View {
             
             
             Button {
-                viewManipulation = 3
+                for user in realmManager.users {
+                    print("\(user.username) \(user.password)")
+                    if user.username == self.username && user.password == self.password {
+                        viewManipulation = 3
+                    }
+                }
             } label: {
                 Text("Login")
                     .foregroundColor(.black)

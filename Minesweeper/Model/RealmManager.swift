@@ -10,9 +10,11 @@ import RealmSwift
 
 class RealmManager: ObservableObject {
     private(set) var localRealm: Realm?
+    @Published var users: [User] = []
     
     init() {
         openRealm()
+        self.users = getUsers()
     }
     
     func openRealm() {
@@ -31,15 +33,13 @@ class RealmManager: ObservableObject {
         }
     }
     
-    func addCourse(username: String, password: String) {
+    func addUser(username: String, password: String) {
         if let localRealm = localRealm {
             do {
                 try localRealm.write {
                     let user = User()
                     user.username = username
                     user.password = password
-                    user.prevBoard = [[Int]]()
-                    user.achievements = [String]()
                     localRealm.add(user)
                     print("Added new user to Realm!")
                 }
@@ -49,6 +49,15 @@ class RealmManager: ObservableObject {
         }
     }
     
+    func getUsers() -> [User] {
+        if let localRealm = localRealm {
+            let allUsers = localRealm.objects(User.self)
+            allUsers.forEach { user in
+                users.append(user)
+            }
+        }
+        return self.users
+    }
     
     
 }

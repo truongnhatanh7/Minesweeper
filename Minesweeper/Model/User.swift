@@ -9,10 +9,15 @@ import Foundation
 import RealmSwift
 
 class User: Object, ObjectKeyIdentifiable {
-    @objc dynamic var id = UUID()
-    @objc dynamic var username = ""
-    @objc dynamic var password = ""
-    @objc dynamic var prevBoard = [[Int]]() // 0 close | 1 open | 2 flag
-    @objc dynamic var achievements = [String]()
+    @Persisted(primaryKey: true) var _id: ObjectId
+    @Persisted var username = ""
+    @Persisted var password = ""
+    @Persisted var prevBoard = List<PrevBoardRow>() // 0 close | 1 open | 2 flag
+    @Persisted var achievements = List<String>()
     
+}
+
+class PrevBoardRow: Object, ObjectKeyIdentifiable {
+    @Persisted(primaryKey: true) var _id: ObjectId
+    @Persisted var boardRow = List<Int>()
 }
