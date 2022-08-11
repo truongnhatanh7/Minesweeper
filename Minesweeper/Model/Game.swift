@@ -47,9 +47,8 @@ class Game: ObservableObject {
     
     // MARK: Init prev board
     func initializePrevBoard() {
-        print("prev board start")
-        var newBoard = [[Cell]]()
         settings.isProcessing = true
+        var newBoard = [[Cell]]()
         self.score = 0
         self.settings.numBombs = 0
         
@@ -61,43 +60,46 @@ class Game: ObservableObject {
             newBoard.append(column)
         }
         
-        let users = localRealm!.objects(User.self)
-        for user in users {
-            if user.username == currentUsername {
-                let currentBoard = user.prevBoard
-                for row in 0..<10 {
-                    let currentRow = currentBoard[row].boardRow
-                    for col in 0..<10 {
-                        newBoard[row][col].isOpened = false
-                        newBoard[row][col].isFlagged = currentRow[col].isFlagged
-                        if newBoard[row][col].isFlagged { flagCount += 1 }
-                        if currentRow[col].status == .bomb {
-                            self.settings.numBombs += 1
-                            newBoard[row][col].status = .bomb
-                        } else {
-                            newBoard[row][col].status = .normal
-                        }
+        
+        if let user = localRealm!.object(ofType: User.self, forPrimaryKey: currentUserId) {
+            let currentBoard = user.prevBoard
+            for row in 0..<10 {
+                let currentRow = currentBoard[row].boardRow
+                for col in 0..<10 {
+                    newBoard[row][col].isOpened = false
+                    newBoard[row][col].isFlagged = currentRow[col].isFlagged
+                    if newBoard[row][col].isFlagged { flagCount += 1 }
+                    if currentRow[col].status == .bomb {
+                        self.settings.numBombs += 1
+                        newBoard[row][col].status = .bomb
+                    } else {
+                        newBoard[row][col].status = .normal
                     }
                 }
-                self.board = newBoard
-                do {
-                    try localRealm!.write {
-                        var cur = user.moveHistory.count - 1
-                        let moveHistory = Array(user.moveHistory)
-                        while cur >= 0 {
-                            let currentMove = moveHistory[cur]
-                            revealCell(cell: newBoard[currentMove.row][currentMove.col])
-                            cur -= 1
-                        }
-                    }
-                } catch {
-                    print(error)
-                }
-                break
             }
+            self.board = newBoard
+            revealPrevCells(user: user, newBoard: newBoard)
+            setContinueState(value: false)
         }
-        setContinueState(value: false)
+
         settings.isProcessing = false
+    }
+    
+    // MARK: Reveal prev cells
+    func revealPrevCells(user: User, newBoard: [[Cell]]) {
+        do {
+            try localRealm!.write {
+                var cur = user.moveHistory.count - 1
+                let moveHistory = Array(user.moveHistory)
+                while cur >= 0 {
+                    let currentMove = moveHistory[cur]
+                    revealCell(cell: newBoard[currentMove.row][currentMove.col])
+                    cur -= 1
+                }
+            }
+        } catch {
+            print(error)
+        }
     }
     
     // MARK: Init board
@@ -131,6 +133,7 @@ class Game: ObservableObject {
         self.board = newBoard
     }
     
+    // MARK: Reset move history
     func resetMoveHistory() {
         do {
             try localRealm!.write({
@@ -154,6 +157,7 @@ class Game: ObservableObject {
                 }
             }
             
+            isLose = true
             // TODO: Handle lose condition
             
         } else {
@@ -182,6 +186,7 @@ class Game: ObservableObject {
         return false
     }
     
+    // MARK: Get num count
     private func getOpenedCount(cell: Cell) -> Int {
         let row = cell.row
         let col = cell.col

@@ -51,7 +51,10 @@ struct GameView: View {
         }
         .transition(.opacity)
         .onReceive(NotificationCenter.default.publisher(for: UIApplication.didEnterBackgroundNotification)) { output in
-            game.saveStateBeforeExit(currentUsername: game.currentUsername, board: game.board)
+            if !game.isLose {
+                game.saveStateBeforeExit(currentUsername: game.currentUsername, board: game.board)
+            }
+            
         }
         
     }
