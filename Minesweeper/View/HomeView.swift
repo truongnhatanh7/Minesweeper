@@ -9,6 +9,8 @@ import SwiftUI
 
 struct HomeView: View {
     @State var viewManipulation: Int = 0
+    @EnvironmentObject var game: Game
+    @EnvironmentObject var realmManager: RealmManager
     var body: some View {
         if viewManipulation == 0 {
             PreHomeLoginView(viewManipulation: $viewManipulation)
@@ -16,10 +18,22 @@ struct HomeView: View {
             PreHomeRegisterView(viewManipulation: $viewManipulation)
         } else {
             TabView {
-                ModeView()
+                ModeView(viewManipulation: $viewManipulation)
                     .tabItem {
                         Image(systemName: "gamecontroller")
                         Text("Play")
+                    }
+                
+                LeaderboardView()
+                    .tabItem {
+                        Image(systemName: "person.3")
+                        Text("Leaderboard")
+                    }
+                
+                HelpView()
+                    .tabItem {
+                        Image(systemName: "questionmark.circle")
+                        Text("Help")
                     }
                 // TODO: Add leaderboard, how to play
             }

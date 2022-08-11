@@ -6,11 +6,14 @@
 //
 
 import Foundation
+import SwiftUI
 import RealmSwift
 
 class RealmManager: ObservableObject {
     private(set) var localRealm: Realm?
+    
     @Published var users: [User] = []
+    @EnvironmentObject var game: Game
     
     init() {
         openRealm()
@@ -26,7 +29,6 @@ class RealmManager: ObservableObject {
             })
 
             Realm.Configuration.defaultConfiguration = config
-
             localRealm = try Realm()
         } catch {
             print("Error opening Realm", error)
@@ -40,6 +42,12 @@ class RealmManager: ObservableObject {
                     let user = User()
                     user.username = username
                     user.password = password
+                    for row in 0..<10 {
+                        user.prevBoard.append(PrevBoardRow())
+                        for _ in 0..<10 {
+                            user.prevBoard[row].boardRow.append(PersistedCell())
+                        }
+                    }
                     localRealm.add(user)
                     print("Added new user to Realm!")
                 }
@@ -59,5 +67,31 @@ class RealmManager: ObservableObject {
         return self.users
     }
     
+    func saveStateBeforeExit(currentUsername: String, board: [[Cell]]) {
+        let users = getUsers()
+        for user in users {
+            if user.username == currentUsername {
+                do {
+                    try localRealm!.write {
+                        let currentBoard = user.prevBoard
+                        for row in 0..<board.count {
+                            let currentRow = currentBoard[row].boardRow
+                            for col in 0..<board[0].count {
+                                currentRow[col].col = col
+                                currentRow[col].row = row
+                                currentRow[col].isOpened = board[row][col].isOpened
+                                currentRow[col].isFlagged = board[row][col].isFlagged
+                                currentRow[col].status = board[row][col].status == .normal ? .normal : board[row][col].status == .bomb ? .bomb : .opened
+                            }
+                        }
+                        
+                    }
+                }
+                catch {
+                    print("Error write file ", error)
+                }
+            }
+        }
+    }
     
 }

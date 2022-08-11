@@ -9,44 +9,21 @@ import SwiftUI
 
 struct GameView: View {
     @EnvironmentObject var game: Game
+//    @EnvironmentObject var realmManager: RealmManager
+    @Binding var isPlaying: Bool
+    @Binding var isContinue: Bool
+    @Binding var numBombs: Int
     var body: some View {
         ZStack {
-//            !game.settings.isProcessing ? (
-//                VStack(spacing: 0) {
-//                    Text("Total bombs: \(game.settings.numBombs)")
-//                        .padding()
-//                        .font(.title)
-//                        .clipShape(Capsule())
-//
-//                    HStack {
-//                        Text("Score: \(game.score)")
-//                            .padding()
-//                        Spacer()
-//                        Text("Flag: \(game.flagCount)")
-//                            .padding()
-//
-//                    }
-//                    ForEach(0..<game.board.count, id: \.self) { row in
-//                        HStack(spacing: 0) {
-//                            ForEach(0..<game.board[row].count, id: \.self) { col in
-//                                CellView(cell: game.board[row][col])
-//                            }
-//                        }
-//                    }
-//                }
-//                .onAppear() {
-//                    print("appear")
-//                }
-//                .transition(.opacity)
-//
-//            ) : (
-//                VStack {
-//                    Text("Loading...")
-//                }
-//            )
             if !game.settings.isProcessing {
                 VStack(spacing: 0) {
-                    Text("Total bombs: \(game.settings.numBombs)")
+                    Button  {
+                        isPlaying = false
+                    } label: {
+                        Text("Return")
+                    }
+
+                    Text("Total bombs: \(numBombs)")
                         .padding()
                         .font(.title)
                         .clipShape(Capsule())
@@ -59,6 +36,7 @@ struct GameView: View {
                             .padding()
                         
                     }
+
                     ForEach(0..<game.board.count, id: \.self) { row in
                         HStack(spacing: 0) {
                             ForEach(0..<game.board[row].count, id: \.self) { col in
@@ -66,18 +44,17 @@ struct GameView: View {
                             }
                         }
                     }
-                }
-                .onAppear() {
-                    print("appear")
+
                 }
                 .transition(.opacity)
             } else {
                 Text("Loading...")
             }
-
-        
         }
         .transition(.opacity)
+        .onReceive(NotificationCenter.default.publisher(for: UIApplication.didEnterBackgroundNotification)) { output in
+            game.saveStateBeforeExit(currentUsername: game.currentUsername, board: game.board)
+        }
         
     }
 }
@@ -85,7 +62,10 @@ struct GameView: View {
 struct GameView_Previews: PreviewProvider {
     private static var gameSettings = GameSettings()
     static var previews: some View {
-        GameView()
+        let home = HomeView()
+        let mode = ModeView(viewManipulation: home.$viewManipulation)
+        
+        GameView(isPlaying: mode.$isPlaying, isContinue: mode.$isContinue, numBombs: mode.$currentMode)
             .environmentObject(Game(settings: gameSettings))
     }
 }

@@ -10,48 +10,64 @@ import SwiftUI
 struct ModeView: View {
     @EnvironmentObject var game: Game
     @State var currentMode: Int = 10
+    @State var isContinue = false
+    @Binding var viewManipulation: Int
+    @State var isPlaying: Bool = false
     var body: some View {
-        VStack {
-            Text("Difficulty: \(currentMode)")
+        if isPlaying {
+            GameView(isPlaying: $isPlaying, isContinue: $isContinue, numBombs: $currentMode)
+        } else {
             VStack {
-                Button {
-                    currentMode = 10
-                } label: {
-                    Text("10 bombs")
-                }
-                Button {
-                    currentMode = 15
-                } label: {
-                    Text("15 bombs")
-                }
-                Button {
-                    currentMode = 20
-                } label: {
-                    Text("20 bombs")
-                }
-                NavigationLink {
-                    GameView()
-                } label: {
-                    Text("Play")
-                }
+                Text("Welcome back \(game.currentUsername)")
+                Text("Difficulty: \(currentMode)")
+                VStack {
+                    Button {
+                        isPlaying = true
+                        currentMode = 10
+                        game.initializeBoard(numBombs: 10)
+                    } label: {
+                        Text("10 bombs")
+                    }
+                    Button {
+                        isPlaying = true
+                        currentMode = 15
+                        game.initializeBoard(numBombs: 15)
+                    } label: {
+                        Text("15 bombs")
+                    }
+                    Button {
+                        isPlaying = true
+                        currentMode = 20
+                        game.initializeBoard(numBombs: 20)
+                    } label: {
+                        Text("20 bombs")
+                    }
+                    
+                    Button {
+                        isContinue = true
+                        isPlaying = true
+                        print("shawty")
+                        game.initializePrevBoard()
+                    } label: {
+                        Text("Continue")
+                    }
 
+                    Button {
+                        viewManipulation = 0
+                    } label: {
+                        Text("Log out")
+                    }
+                }
             }
+            .transition(.opacity)
         }
-        .onAppear() {
-            print("REC")
-            game.settings.isProcessing = true
-        }
-        .transition(.opacity)
-        .onDisappear() {
-            // TODO: wait for done init -> load view
-            game.settings.numBombs = currentMode
-            game.board = Game.initializeBoard(settings: game.settings)
-        }
+
     }
 }
 
 struct ModeView_Previews: PreviewProvider {
     static var previews: some View {
-        ModeView()
+        
+        ModeView(viewManipulation: HomeView().$viewManipulation)
     }
 }

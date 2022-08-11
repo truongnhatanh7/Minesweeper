@@ -15,6 +15,7 @@ class Cell: ObservableObject {
     @Published var status: Status
     @Published var isOpened: Bool
     @Published var isFlagged: Bool
+    @Published var currentBombs: Int
     
     var image: Image {
         if !isOpened && isFlagged {
@@ -30,7 +31,7 @@ class Cell: ObservableObject {
             return Image("normal")
         case .normal:
             return Image("normal")
-        case .opened(let currentBombs):
+        case .opened:
             if !isOpened {
                 return Image("normal")
             }
@@ -51,6 +52,7 @@ class Cell: ObservableObject {
         self.status = .normal
         self.isOpened = false
         self.isFlagged = false
+        self.currentBombs = 0
     }
     
     
@@ -60,6 +62,6 @@ extension Cell {
     enum Status: Equatable {
         case normal
         case bomb
-        case opened(Int) // 1 -> num of surrounding bombs, 0 -> none
+        case opened 
     }
 }

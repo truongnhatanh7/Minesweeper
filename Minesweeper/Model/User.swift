@@ -12,12 +12,32 @@ class User: Object, ObjectKeyIdentifiable {
     @Persisted(primaryKey: true) var _id: ObjectId
     @Persisted var username = ""
     @Persisted var password = ""
-    @Persisted var prevBoard = List<PrevBoardRow>() // 0 close | 1 open | 2 flag
+    @Persisted var prevBoard = List<PrevBoardRow>() // 0 close+normal | 1 close+bomb | 2 flag+normal | 3 flag+bomb | 4 open+normal
     @Persisted var achievements = List<String>()
-    
+    @Persisted var useOldBoard = false
+    @Persisted var highscore = 0
+    @Persisted var moveHistory = List<Move>()
 }
 
-class PrevBoardRow: Object, ObjectKeyIdentifiable {
-    @Persisted(primaryKey: true) var _id: ObjectId
-    @Persisted var boardRow = List<Int>()
+class Move: EmbeddedObject, ObjectKeyIdentifiable {
+    @Persisted var row: Int
+    @Persisted var col: Int
+}
+
+class PrevBoardRow: EmbeddedObject, ObjectKeyIdentifiable {
+    @Persisted var boardRow = List<PersistedCell>()
+}
+
+class PersistedCell: EmbeddedObject, ObjectKeyIdentifiable {
+    @Persisted var row: Int
+    @Persisted var col: Int
+    @Persisted var status: PersistedStatus
+    @Persisted var isOpened: Bool
+    @Persisted var isFlagged: Bool
+
+    enum PersistedStatus: Int, PersistableEnum {
+        case normal
+        case bomb
+        case opened
+    }
 }

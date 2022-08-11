@@ -12,7 +12,7 @@ struct PreHomeRegisterView: View {
     @State var password: String = ""
     @State var canNavigate: Bool = false
     @Binding var viewManipulation: Int
-    @EnvironmentObject var realmManager: RealmManager
+    @EnvironmentObject var game: Game
     
     var body: some View {
         
@@ -40,15 +40,16 @@ struct PreHomeRegisterView: View {
             
             
             Button {
-                for user in realmManager.users {
+                for user in game.getUsers() {
                     if user.username == self.username {
                         // TODO: Warn collapsed username
                         print("collapsed")
                         return
                     }
                 }
-                print("brah")
-                realmManager.addUser(username: self.username, password: self.password)
+                
+                game.addUser(username: self.username, password: self.password)
+                game.currentUsername = username
                 viewManipulation = 3
             } label: {
                 Text("Register")
