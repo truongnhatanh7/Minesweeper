@@ -6,12 +6,12 @@
 //
 
 import SwiftUI
+import RealmSwift
 
 struct PreHomeLoginView: View {
     @State var username: String = ""
     @State var password: String = ""
     @Binding var viewManipulation: Int
-//    @EnvironmentObject var realmManager: RealmManager
     @EnvironmentObject var game: Game
     
     var body: some View {
@@ -41,8 +41,8 @@ struct PreHomeLoginView: View {
             
             Button {
                 for user in game.getUsers() {
-                    print("LOGIN: \(user.username) \(user.password)")
                     if user.username == self.username && user.password == self.password {
+                        game.currentUserId = user._id
                         game.currentUsername = user.username
                         viewManipulation = 3
                     }

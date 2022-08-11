@@ -10,12 +10,12 @@ import SwiftUI
 struct ModeView: View {
     @EnvironmentObject var game: Game
     @State var currentMode: Int = 10
-    @State var isContinue = false
+    
     @Binding var viewManipulation: Int
     @State var isPlaying: Bool = false
     var body: some View {
         if isPlaying {
-            GameView(isPlaying: $isPlaying, isContinue: $isContinue, numBombs: $currentMode)
+            GameView(isPlaying: $isPlaying, numBombs: $currentMode)
         } else {
             VStack {
                 Text("Welcome back \(game.currentUsername)")
@@ -43,13 +43,13 @@ struct ModeView: View {
                         Text("20 bombs")
                     }
                     
-                    Button {
-                        isContinue = true
-                        isPlaying = true
-                        print("shawty")
-                        game.initializePrevBoard()
-                    } label: {
-                        Text("Continue")
+                    if game.canContinue {
+                        Button {
+                            isPlaying = true
+                            game.initializePrevBoard()
+                        } label: {
+                            Text("Continue")
+                        }
                     }
 
                     Button {
@@ -60,6 +60,10 @@ struct ModeView: View {
                 }
             }
             .transition(.opacity)
+            .onAppear() {
+                let user = game.localRealm!.object(ofType: User.self, forPrimaryKey: game.currentUserId)
+                game.canContinue = user?.canContinue ?? false
+            }
         }
 
     }

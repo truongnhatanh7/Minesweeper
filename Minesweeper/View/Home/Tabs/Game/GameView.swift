@@ -9,9 +9,7 @@ import SwiftUI
 
 struct GameView: View {
     @EnvironmentObject var game: Game
-//    @EnvironmentObject var realmManager: RealmManager
     @Binding var isPlaying: Bool
-    @Binding var isContinue: Bool
     @Binding var numBombs: Int
     var body: some View {
         ZStack {
@@ -65,7 +63,7 @@ struct GameView_Previews: PreviewProvider {
         let home = HomeView()
         let mode = ModeView(viewManipulation: home.$viewManipulation)
         
-        GameView(isPlaying: mode.$isPlaying, isContinue: mode.$isContinue, numBombs: mode.$currentMode)
+        GameView(isPlaying: mode.$isPlaying, numBombs: mode.$currentMode)
             .environmentObject(Game(settings: gameSettings))
     }
 }

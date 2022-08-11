@@ -17,6 +17,7 @@ class User: Object, ObjectKeyIdentifiable {
     @Persisted var useOldBoard = false
     @Persisted var highscore = 0
     @Persisted var moveHistory = List<Move>()
+    @Persisted var canContinue = false
 }
 
 class Move: EmbeddedObject, ObjectKeyIdentifiable {

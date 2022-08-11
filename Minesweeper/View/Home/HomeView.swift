@@ -10,7 +10,6 @@ import SwiftUI
 struct HomeView: View {
     @State var viewManipulation: Int = 0
     @EnvironmentObject var game: Game
-    @EnvironmentObject var realmManager: RealmManager
     var body: some View {
         if viewManipulation == 0 {
             PreHomeLoginView(viewManipulation: $viewManipulation)

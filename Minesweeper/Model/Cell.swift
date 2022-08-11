@@ -27,7 +27,7 @@ class Cell: ObservableObject {
             if isOpened {
                 return Image("bomb")
             }
-
+            
             return Image("normal")
         case .normal:
             return Image("normal")
@@ -35,14 +35,13 @@ class Cell: ObservableObject {
             if !isOpened {
                 return Image("normal")
             }
-
+            
             if currentBombs == 0 {
                 return Image("empty")
             }
-
+            
             return Image("\(currentBombs)")
         }
-        
         
     }
     
@@ -62,6 +61,6 @@ extension Cell {
     enum Status: Equatable {
         case normal
         case bomb
-        case opened 
+        case opened
     }
 }

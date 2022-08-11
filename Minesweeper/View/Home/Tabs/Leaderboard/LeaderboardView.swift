@@ -10,6 +10,7 @@ import RealmSwift
 
 struct LeaderboardView: View {
     @State var users: [User] = []
+    @EnvironmentObject var game: Game
     
     var body: some View {
         VStack(alignment: .center) {
@@ -19,9 +20,9 @@ struct LeaderboardView: View {
             }
         }
         .onAppear() {
-            let realm = try! Realm()
-            users = Array(realm.objects(User.self)).sorted(by: { $0.highscore > $1.highscore })
+            users = Array(game.getUsers()).sorted(by: { $0.highscore > $1.highscore })
         }
+        
     }
 }
 
