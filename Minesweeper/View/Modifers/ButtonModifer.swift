@@ -10,7 +10,7 @@ import SwiftUI
 struct ButtonModifer: ViewModifier {
     func body(content: Content) -> some View {
         content
-            .padding(.horizontal, 28)
+            .padding(.horizontal, 32)
             .padding(.vertical, 10)
             .background(Color("neonGreen"))
             .foregroundColor(.black)

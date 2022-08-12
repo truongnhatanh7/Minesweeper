@@ -19,7 +19,7 @@ struct ModeView: View {
         } else {
             VStack(alignment: .center) {
                 Spacer()
-                Text("Hi \(game.currentUsername)")
+                Text("Hi \(game.currentUsername)".uppercased())
                     .font(.title)
                     .fontWeight(.bold)
                 Spacer()
@@ -52,7 +52,6 @@ struct ModeView: View {
                         Text("20 bombs")
                     }
                     .modifier(ButtonModifer())
-                    .padding(.bottom, 48)
                     
                     if game.canContinue {
                         Button {
@@ -82,12 +81,7 @@ struct ModeView: View {
                   alignment: .center
                 )
             .transition(.opacity)
-            .onAppear() {
-                let user = game.localRealm!.object(ofType: User.self, forPrimaryKey: game.currentUserId)
-                game.canContinue = user?.canContinue ?? false
-            }
         }
-
     }
 }
 

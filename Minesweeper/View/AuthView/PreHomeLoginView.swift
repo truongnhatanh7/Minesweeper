@@ -44,6 +44,7 @@ struct PreHomeLoginView: View {
                     if user.username == self.username && user.password == self.password {
                         game.currentUserId = user._id
                         game.currentUsername = user.username
+                        game.canContinue = user.canContinue
                         viewManipulation = 3
                     }
                 }

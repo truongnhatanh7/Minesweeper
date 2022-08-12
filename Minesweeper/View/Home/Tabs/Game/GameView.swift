@@ -30,6 +30,8 @@ struct GameView: View {
                             game.initializeBoard(numBombs: game.settings.numBombs)
                             game.score = 0
                             game.flagCount = 0
+                            game.isWin = false
+                            game.isLose = false
                         } label: {
                             Text("RESTART")
                                 .italic()
@@ -62,14 +64,21 @@ struct GameView: View {
                     .padding()
                     
                     Spacer()
-
-                    ForEach(0..<game.board.count, id: \.self) { row in
-                        HStack(spacing: 0) {
-                            ForEach(0..<game.board[row].count, id: \.self) { col in
-                                CellView(cell: game.board[row][col])
+                    
+                    if game.isWin {
+                        GameModalView(content: "YOU WIN")
+                    } else if game.isLose {
+                        GameModalView(content: "YOU LOSE")
+                    } else {
+                        ForEach(0..<game.board.count, id: \.self) { row in
+                            HStack(spacing: 0) {
+                                ForEach(0..<game.board[row].count, id: \.self) { col in
+                                    CellView(cell: game.board[row][col])
+                                }
                             }
                         }
                     }
+
                     
                     Spacer()
 

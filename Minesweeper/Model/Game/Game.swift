@@ -82,7 +82,6 @@ class Game: ObservableObject {
             revealPrevCells(user: user, newBoard: newBoard)
             setContinueState(value: false)
         }
-
         settings.isProcessing = false
     }
     
@@ -147,7 +146,7 @@ class Game: ObservableObject {
     }
     
     // MARK: Reset move history
-    func resetMoveHistory() {
+    private func resetMoveHistory() {
         do {
             try localRealm!.write({
                 let user = localRealm!.object(ofType: User.self, forPrimaryKey: currentUserId)
@@ -166,7 +165,9 @@ class Game: ObservableObject {
             setContinueState(value: false)
             for row in 0..<board.count {
                 for col in 0..<board[0].count {
-                    board[row][col].isOpened = true
+                    if board[row][col].status == .bomb {
+                        board[row][col].isOpened = true
+                    }
                 }
             }
             
@@ -240,6 +241,7 @@ class Game: ObservableObject {
         cell.currentBombs = openedCount
         cell.isOpened = true
         score += 1
+        handleAddAchievement()
         
         // If empty -> keep exploring surroundings cells
         if openedCount == 0 {
@@ -249,6 +251,41 @@ class Game: ObservableObject {
             revealCell(cell: board[cell.row][min(board[0].count - 1, cell.col + 1)]) // go right
         }
     }
+    
+    func handleAddAchievement() {
+        do {
+            try localRealm?.write({
+                let user = localRealm?.object(ofType: User.self, forPrimaryKey: currentUserId)
+                if let user = user {
+                    if score == 10 {
+                        if !user.achievements.contains("Newbie") {
+                            user.achievements.append("Newbie")
+                        }
+                    } else if score == 30 {
+                        if !user.achievements.contains("Good try") {
+                            user.achievements.append("Good try")
+                        }
+                    } else if score == 50 {
+                        if !user.achievements.contains("Half way") {
+                            user.achievements.append("Half way")
+                        }
+                    } else if score == 80 {
+                        if !user.achievements.contains("80 is so LIT") {
+                            user.achievements.append("80 is so LIT")
+                        }
+                    } else if score == 100 {
+                        if !user.achievements.contains("Sweepar god") {
+                            user.achievements.append("Sweepar god")
+                        }
+                    }
+                }
+            })
+        } catch {
+            print(error)
+        }
+    }
+    
+
     
     // MARK: Toggle flag
     func toggleFlag(cell: Cell) {
