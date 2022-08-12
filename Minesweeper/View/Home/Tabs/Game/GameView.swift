@@ -14,13 +14,29 @@ struct GameView: View {
         ZStack {
             if !game.settings.isProcessing {
                 VStack(spacing: 0) {
-                    Button  {
-                        isPlaying = false
-                    } label: {
-                        Text("CHANGE MODE")
-                            .italic()
-                            .fontWeight(.bold)
+                    HStack {
+                        Button  {
+                            isPlaying = false
+                        } label: {
+                            Text("CHANGE MODE")
+                                .italic()
+                                .fontWeight(.bold)
+                        }
+                        
+                        Text("/")
+                            .padding()
+                        
+                        Button  {
+                            game.initializeBoard(numBombs: game.settings.numBombs)
+                            game.score = 0
+                            game.flagCount = 0
+                        } label: {
+                            Text("RESTART")
+                                .italic()
+                                .fontWeight(.bold)
+                        }
                     }
+
                     Spacer()
 
                     Text("BOMBS: \(game.settings.numBombs)")
@@ -35,12 +51,12 @@ struct GameView: View {
                         Text("SCORE: \(game.score)")
                             .italic()
                             .fontWeight(.bold)
-                            .modifier(ButtonModifier())
+                            .modifier(ButtonModifer())
                         Spacer()
                         Text("FLAG: \(game.flagCount)")
                             .italic()
                             .fontWeight(.bold)
-                            .modifier(ButtonModifier())
+                            .modifier(ButtonModifer())
                         
                     }
                     .padding()

@@ -32,7 +32,7 @@ struct ModeView: View {
                     } label: {
                         Text("10 bombs")
                     }
-                    .modifier(ButtonModifier())
+                    .modifier(ButtonModifer())
                     
                     
                     Button {
@@ -42,7 +42,7 @@ struct ModeView: View {
                     } label: {
                         Text("15 bombs")
                     }
-                    .modifier(ButtonModifier())
+                    .modifier(ButtonModifer())
                     
                     Button {
                         isPlaying = true
@@ -51,7 +51,7 @@ struct ModeView: View {
                     } label: {
                         Text("20 bombs")
                     }
-                    .modifier(ButtonModifier())
+                    .modifier(ButtonModifer())
                     .padding(.bottom, 48)
                     
                     if game.canContinue {
@@ -61,7 +61,7 @@ struct ModeView: View {
                         } label: {
                             Text("Continue")
                         }
-                        .modifier(ButtonModifier())
+                        .modifier(ButtonModifer())
                     }
                     Spacer()
                     Button {

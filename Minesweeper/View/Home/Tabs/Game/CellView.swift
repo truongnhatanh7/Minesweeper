@@ -17,6 +17,9 @@ struct CellView: View {
             .resizable()
             .scaledToFill()
             .frame(width: game.settings.squareSize, height: game.settings.squareSize, alignment: .center)
+            .clipShape(
+                RoundedRectangle(cornerRadius: 4)
+            )
             .opacity(fadeOut ? 0 : 1)
             .animation(.easeInOut(duration: 0.2), value: fadeOut)
             .onTapGesture {
@@ -40,6 +43,7 @@ struct CellView: View {
                     }
                 }
             }
+            
     }
 }
 

@@ -19,6 +19,9 @@
 		5543732528A4B230004E4BEE /* LeaderboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5543732428A4B230004E4BEE /* LeaderboardView.swift */; };
 		5543732728A4B23B004E4BEE /* HelpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5543732628A4B23B004E4BEE /* HelpView.swift */; };
 		5543732928A4B596004E4BEE /* LeaderboardRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5543732828A4B596004E4BEE /* LeaderboardRowView.swift */; };
+		5543733D28A64B55004E4BEE /* ButtonModifer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5543733C28A64B55004E4BEE /* ButtonModifer.swift */; };
+		5543733F28A64B8A004E4BEE /* TextfieldModifer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5543733E28A64B8A004E4BEE /* TextfieldModifer.swift */; };
+		5543734228A64C8A004E4BEE /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5543734128A64C8A004E4BEE /* WebView.swift */; };
 		556D475F289F9BC200D3C459 /* MinesweeperApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 556D475E289F9BC200D3C459 /* MinesweeperApp.swift */; };
 		556D4761289F9BC200D3C459 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 556D4760289F9BC200D3C459 /* ContentView.swift */; };
 		556D4763289F9BC700D3C459 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 556D4762289F9BC700D3C459 /* Assets.xcassets */; };
@@ -45,6 +48,9 @@
 		5543732428A4B230004E4BEE /* LeaderboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderboardView.swift; sourceTree = "<group>"; };
 		5543732628A4B23B004E4BEE /* HelpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpView.swift; sourceTree = "<group>"; };
 		5543732828A4B596004E4BEE /* LeaderboardRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderboardRowView.swift; sourceTree = "<group>"; };
+		5543733C28A64B55004E4BEE /* ButtonModifer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonModifer.swift; sourceTree = "<group>"; };
+		5543733E28A64B8A004E4BEE /* TextfieldModifer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextfieldModifer.swift; sourceTree = "<group>"; };
+		5543734128A64C8A004E4BEE /* WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
 		556D475B289F9BC200D3C459 /* Minesweeper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Minesweeper.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		556D475E289F9BC200D3C459 /* MinesweeperApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MinesweeperApp.swift; sourceTree = "<group>"; };
 		556D4760289F9BC200D3C459 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -89,6 +95,8 @@
 		551BF42F28A0E3F1008F1343 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				5543734028A64C80004E4BEE /* Helper */,
+				5543733B28A64B49004E4BEE /* Modifers */,
 				5543732B28A4F943004E4BEE /* Home */,
 				5543732A28A4F92C004E4BEE /* AuthView */,
 			);
@@ -148,6 +156,23 @@
 				5543732828A4B596004E4BEE /* LeaderboardRowView.swift */,
 			);
 			path = Leaderboard;
+			sourceTree = "<group>";
+		};
+		5543733B28A64B49004E4BEE /* Modifers */ = {
+			isa = PBXGroup;
+			children = (
+				5543733C28A64B55004E4BEE /* ButtonModifer.swift */,
+				5543733E28A64B8A004E4BEE /* TextfieldModifer.swift */,
+			);
+			path = Modifers;
+			sourceTree = "<group>";
+		};
+		5543734028A64C80004E4BEE /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				5543734128A64C8A004E4BEE /* WebView.swift */,
+			);
+			path = Helper;
 			sourceTree = "<group>";
 		};
 		556D4752289F9BC200D3C459 = {
@@ -302,9 +327,12 @@
 				556D475F289F9BC200D3C459 /* MinesweeperApp.swift in Sources */,
 				5543732528A4B230004E4BEE /* LeaderboardView.swift in Sources */,
 				556D4772289FA50E00D3C459 /* GameView.swift in Sources */,
+				5543733D28A64B55004E4BEE /* ButtonModifer.swift in Sources */,
+				5543734228A64C8A004E4BEE /* WebView.swift in Sources */,
 				556D477A289FA79B00D3C459 /* CellView.swift in Sources */,
 				5543732728A4B23B004E4BEE /* HelpView.swift in Sources */,
 				551BF43528A108E7008F1343 /* PreHomeLoginView.swift in Sources */,
+				5543733F28A64B8A004E4BEE /* TextfieldModifer.swift in Sources */,
 				556D478428A0BF1C00D3C459 /* AudioManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
