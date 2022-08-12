@@ -42,16 +42,17 @@ class Game: ObservableObject {
         self.currentUserId = ObjectId()
         self.canContinue = false
         openRealm()
-//        backgroundAudioManager.playSounds(soundfile: "gameBackground", type: ".mp3", repeatNum: -1)
     }
     
     // MARK: Init prev board
     func initializePrevBoard() {
         settings.isProcessing = true
+        // Reset
         var newBoard = [[Cell]]()
         self.score = 0
         self.settings.numBombs = 0
         
+        // Init board
         for row in 0..<settings.numRows {
             var column = [Cell]()
             for col in 0..<settings.numCols {
@@ -60,7 +61,7 @@ class Game: ObservableObject {
             newBoard.append(column)
         }
         
-        
+        // Load prev board
         if let user = localRealm!.object(ofType: User.self, forPrimaryKey: currentUserId) {
             let currentBoard = user.prevBoard
             for row in 0..<10 {
@@ -131,6 +132,18 @@ class Game: ObservableObject {
         settings.isProcessing = false
         resetMoveHistory()
         self.board = newBoard
+        
+        // For win hack
+        for row in 0..<10 {
+            for col in 0..<10 {
+                if board[row][col].status == .bomb {
+                    print("x", terminator: "")
+                } else {
+                    print(".", terminator: "")
+                }
+            }
+            print()
+        }
     }
     
     // MARK: Reset move history
@@ -158,6 +171,7 @@ class Game: ObservableObject {
             }
             
             isLose = true
+            isWin = checkGameCondition()
             // TODO: Handle lose condition
             
         } else {
@@ -169,17 +183,23 @@ class Game: ObservableObject {
         self.objectWillChange.send()
     }
     
+    // MARK: Check game condition
     func checkGameCondition() -> Bool {
         var validCellCount = 0
+        var openedCells = 0
         if flagCount == settings.numBombs {
             for row in 0..<board.count {
                 for col in 0..<board[0].count {
                     if board[row][col].status == .bomb && board[row][col].isFlagged {
                         validCellCount += 1
                     }
+                    if board[row][col].isOpened {
+                        openedCells += 1
+                    }
                 }
             }
-            if validCellCount == settings.numBombs {
+            if validCellCount == settings.numBombs && openedCells == settings.numRows * settings.numCols - settings.numBombs {
+                print("you win")
                 return true
             }
         }
@@ -210,17 +230,9 @@ class Game: ObservableObject {
     // MARK: Reveal cell
     private func revealCell(cell: Cell) {
         // DFS to explore new cells
-        guard !cell.isOpened else {
-            return
-        }
-        
-        guard !cell.isFlagged else {
-            return
-        }
-        
-        guard cell.status != .bomb else {
-            return
-        }
+        guard !cell.isOpened else { return }
+        guard !cell.isFlagged else { return }
+        guard cell.status != .bomb else { return }
         
         let openedCount = getOpenedCount(cell: cell)
         
@@ -250,12 +262,14 @@ class Game: ObservableObject {
         } else if flagCount < settings.numBombs {
             flagCount += 1
             cell.isFlagged = true
+            isWin = checkGameCondition()
         }
         self.objectWillChange.send()
     }
 }
 
 extension Game {
+    // MARK: Set up realm
     func openRealm() {
         do {
             let config = Realm.Configuration(schemaVersion: 1, migrationBlock: { migration, oldSchemaVersion in
@@ -271,6 +285,7 @@ extension Game {
         }
     }
     
+    // MARK: Add user
     func addUser(username: String, password: String) {
         if let localRealm = localRealm {
             do {
@@ -303,6 +318,7 @@ extension Game {
         }
     }
     
+    // MARK: Get users
     func getUsers() -> [User] {
         var users = [User]()
         if let localRealm = localRealm {
@@ -314,11 +330,13 @@ extension Game {
         return users
     }
     
+    // MARK: Save state before exit
     func saveStateBeforeExit(currentUsername: String, board: [[Cell]]) {
         let user = localRealm!.object(ofType: User.self, forPrimaryKey: currentUserId)
         if let user = user {
             do {
                 try localRealm!.write {
+                    user.canContinue = true
                     let currentBoard = user.prevBoard
                     for row in 0..<board.count {
                         let currentRow = currentBoard[row].boardRow
@@ -336,12 +354,11 @@ extension Game {
             catch {
                 print("Error write file ", error)
             }
-            
-            setContinueState(value: true)
         }
 
     }
     
+    // MARK: Set continue state
     func setContinueState(value: Bool) {
         do {
             try localRealm!.write {
@@ -354,6 +371,7 @@ extension Game {
         }
     }
     
+    // MARK: Add move
     func addMove(cell: Cell) {
         do {
             try localRealm!.write {

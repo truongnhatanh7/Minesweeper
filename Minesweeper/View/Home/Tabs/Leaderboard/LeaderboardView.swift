@@ -14,11 +14,26 @@ struct LeaderboardView: View {
     
     var body: some View {
         VStack(alignment: .center) {
-            Text("Leaderboard")
-            ForEach(users, id: \.self) { user in
-                LeaderboardRowView(user: user)
+            Text("LEADERBOARD")
+                .font(.largeTitle)
+                .fontWeight(.bold)
+                .foregroundColor(Color("text"))
+                .padding()
+            ScrollView {
+                ForEach(users, id: \.self) { user in
+                    LeaderboardRowView(user: user)
+                        .padding()
+                }
             }
+            
         }
+        .frame(
+              minWidth: 0,
+              maxWidth: .infinity,
+              minHeight: 0,
+              maxHeight: .infinity,
+              alignment: .center
+            )
         .onAppear() {
             users = Array(game.getUsers()).sorted(by: { $0.highscore > $1.highscore })
         }

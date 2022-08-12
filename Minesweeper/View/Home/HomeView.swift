@@ -6,10 +6,14 @@
 //
 
 import SwiftUI
+import AVKit
 
 struct HomeView: View {
     @State var viewManipulation: Int = 0
     @EnvironmentObject var game: Game
+    init() {
+        UITabBar.appearance().barTintColor = UIColor(named: "background")
+    }
     var body: some View {
         if viewManipulation == 0 {
             PreHomeLoginView(viewManipulation: $viewManipulation)
@@ -34,7 +38,10 @@ struct HomeView: View {
                         Image(systemName: "questionmark.circle")
                         Text("Help")
                     }
-                // TODO: Add leaderboard, how to play
+            }
+            .accentColor(Color("neonGreen"))
+            .onAppear() {
+                game.backgroundAudioManager.playSounds(soundfile: "homebackground", type: ".mp3", repeatNum: -1)
             }
             
         }

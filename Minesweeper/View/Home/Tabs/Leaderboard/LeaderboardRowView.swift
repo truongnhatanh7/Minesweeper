@@ -15,6 +15,11 @@ struct LeaderboardRowView: View {
             Spacer()
             Text("\(user.highscore)")
         }
+        .padding()
+        .overlay(
+            RoundedRectangle(cornerRadius: 5.0)
+                .stroke(Color("text"), lineWidth: 1)
+        )
     }
 }
 

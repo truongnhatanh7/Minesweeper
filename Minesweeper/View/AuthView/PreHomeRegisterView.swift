@@ -17,18 +17,16 @@ struct PreHomeRegisterView: View {
     var body: some View {
         
         VStack {
-            Text("Minesweeper")
+            Text("MINESWEEPER")
                 .font(.largeTitle)
+                .fontWeight(.bold)
+                .foregroundColor(Color("text"))
             VStack {
                 TextField("Username", text: $username)
-                    .padding()
-                    .background(.teal)
-                    .cornerRadius(5.0)
+                    .modifier(TextfieldModifer())
                     .padding(.bottom, 18)
                 SecureField("Password", text: $password)
-                    .padding()
-                    .background(.teal)
-                    .cornerRadius(5.0)
+                    .modifier(TextfieldModifer())
             }
             .padding()
 
@@ -36,6 +34,8 @@ struct PreHomeRegisterView: View {
                 viewManipulation = 0
             } label: {
                 Text("Already have an account? Log in")
+                    .underline()
+                    .foregroundColor(Color("text"))
             }
             
             
@@ -56,7 +56,7 @@ struct PreHomeRegisterView: View {
                     .foregroundColor(.black)
                     .frame(maxWidth: .infinity)
                     .padding(.vertical, 10)
-                    .background(.mint)
+                    .background(Color("neonGreen"))
                     .cornerRadius(5.0)
                 
             }
@@ -68,7 +68,6 @@ struct PreHomeRegisterView: View {
 
 struct PreHomeRegisterView_Previews: PreviewProvider {
     static var previews: some View {
-        
         PreHomeRegisterView(viewManipulation: HomeView().$viewManipulation)
     }
 }

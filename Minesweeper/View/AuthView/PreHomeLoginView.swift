@@ -17,18 +17,16 @@ struct PreHomeLoginView: View {
     var body: some View {
         
         VStack {
-            Text("Minesweeper")
+            Text("MINESWEEPER")
                 .font(.largeTitle)
+                .fontWeight(.bold)
+                .foregroundColor(Color("text"))
             VStack {
                 TextField("Username", text: $username)
-                    .padding()
-                    .background(.teal)
-                    .cornerRadius(5.0)
+                    .modifier(TextfieldModifer())
                     .padding(.bottom, 18)
                 SecureField("Password", text: $password)
-                    .padding()
-                    .background(.teal)
-                    .cornerRadius(5.0)
+                    .modifier(TextfieldModifer())
             }
             .padding()
 
@@ -36,6 +34,8 @@ struct PreHomeLoginView: View {
                 viewManipulation = 1
             } label: {
                 Text("Don't have an account? Sign up")
+                    .underline()
+                    .foregroundColor(Color("text"))
             }
             
             
@@ -52,7 +52,7 @@ struct PreHomeLoginView: View {
                     .foregroundColor(.black)
                     .frame(maxWidth: .infinity)
                     .padding(.vertical, 10)
-                    .background(.mint)
+                    .background(Color("neonGreen"))
                     .cornerRadius(5.0)
                 
             }

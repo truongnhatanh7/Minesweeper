@@ -10,7 +10,6 @@ import SwiftUI
 struct GameView: View {
     @EnvironmentObject var game: Game
     @Binding var isPlaying: Bool
-    @Binding var numBombs: Int
     var body: some View {
         ZStack {
             if !game.settings.isProcessing {
@@ -18,22 +17,35 @@ struct GameView: View {
                     Button  {
                         isPlaying = false
                     } label: {
-                        Text("Return")
+                        Text("CHANGE MODE")
+                            .italic()
+                            .fontWeight(.bold)
                     }
+                    Spacer()
 
-                    Text("Total bombs: \(numBombs)")
+                    Text("BOMBS: \(game.settings.numBombs)")
+                        .font(.largeTitle)
+                        .fontWeight(.bold)
                         .padding()
-                        .font(.title)
-                        .clipShape(Capsule())
+                    
+                    Spacer()
+                        
                         
                     HStack {
-                        Text("Score: \(game.score)")
-                            .padding()
+                        Text("SCORE: \(game.score)")
+                            .italic()
+                            .fontWeight(.bold)
+                            .modifier(ButtonModifier())
                         Spacer()
-                        Text("Flag: \(game.flagCount)")
-                            .padding()
+                        Text("FLAG: \(game.flagCount)")
+                            .italic()
+                            .fontWeight(.bold)
+                            .modifier(ButtonModifier())
                         
                     }
+                    .padding()
+                    
+                    Spacer()
 
                     ForEach(0..<game.board.count, id: \.self) { row in
                         HStack(spacing: 0) {
@@ -42,6 +54,8 @@ struct GameView: View {
                             }
                         }
                     }
+                    
+                    Spacer()
 
                 }
                 .transition(.opacity)
@@ -56,6 +70,12 @@ struct GameView: View {
             }
             
         }
+        .onAppear() {
+            game.backgroundAudioManager.playSounds(soundfile: "gameBackground", type: ".mp3", repeatNum: -1)
+        }
+        .onDisappear() {
+            game.backgroundAudioManager.playSounds(soundfile: "homebackground", type: ".mp3", repeatNum: -1)
+        }
         
     }
 }
@@ -66,7 +86,7 @@ struct GameView_Previews: PreviewProvider {
         let home = HomeView()
         let mode = ModeView(viewManipulation: home.$viewManipulation)
         
-        GameView(isPlaying: mode.$isPlaying, numBombs: mode.$currentMode)
+        GameView(isPlaying: mode.$isPlaying)
             .environmentObject(Game(settings: gameSettings))
     }
 }
