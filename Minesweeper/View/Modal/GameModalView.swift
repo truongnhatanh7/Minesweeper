@@ -14,7 +14,7 @@ struct GameModalView: View {
     var body: some View {
         VStack {
             Spacer()
-            Text("/ \(content) /")
+            Text("\(content)")
                 .italic()
                 .font(.largeTitle)
                 .fontWeight(.bold)

@@ -17,6 +17,9 @@ class GameSettings: ObservableObject {
     
     var squareSize: CGFloat {
         // Screen width / cols = square size
-        UIScreen.main.bounds.width / CGFloat(numCols)
+        if UIDevice.current.userInterfaceIdiom == .phone {
+            return UIScreen.main.bounds.width / CGFloat(numCols)
+        }
+        return 768 / CGFloat(numCols)
     }
 }

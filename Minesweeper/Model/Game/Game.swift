@@ -47,7 +47,8 @@ class Game: ObservableObject {
     // MARK: Init prev board
     func initializePrevBoard() {
         settings.isProcessing = true
-        // Reset
+        self.isLose = false
+        self.isWin = false
         var newBoard = [[Cell]]()
         self.score = 0
         self.settings.numBombs = 0
@@ -82,6 +83,7 @@ class Game: ObservableObject {
             revealPrevCells(user: user, newBoard: newBoard)
             setContinueState(value: false)
         }
+        
         settings.isProcessing = false
     }
     
@@ -104,9 +106,10 @@ class Game: ObservableObject {
     
     // MARK: Init board
     func initializeBoard(numBombs: Int) {
-
-        var newBoard = [[Cell]]()
         settings.isProcessing = true
+        self.isLose = false
+        self.isWin = false
+        var newBoard = [[Cell]]()
         self.score = 0
         
         for row in 0..<settings.numRows {
@@ -128,9 +131,9 @@ class Game: ObservableObject {
             }
         }
         
-        settings.isProcessing = false
         resetMoveHistory()
         self.board = newBoard
+        settings.isProcessing = false
         
         // For win hack
         for row in 0..<10 {
@@ -172,13 +175,13 @@ class Game: ObservableObject {
             }
             
             isLose = true
-            isWin = checkGameCondition()
             // TODO: Handle lose condition
             
         } else {
             audioManager.playSounds(soundfile: "touch", type: ".wav", repeatNum: 0)
             revealCell(cell: cell)
             addMove(cell: cell)
+            isWin = checkGameCondition()
         }
         
         self.objectWillChange.send()
@@ -200,7 +203,7 @@ class Game: ObservableObject {
                 }
             }
             if validCellCount == settings.numBombs && openedCells == settings.numRows * settings.numCols - settings.numBombs {
-                print("you win")
+                score = 100 + settings.numBombs
                 return true
             }
         }
@@ -252,6 +255,7 @@ class Game: ObservableObject {
         }
     }
     
+    // MARK: Handle add achievement
     func handleAddAchievement() {
         do {
             try localRealm?.write({

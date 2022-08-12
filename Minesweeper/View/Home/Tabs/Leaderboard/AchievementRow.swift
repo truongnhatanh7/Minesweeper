@@ -11,32 +11,36 @@ struct AchievementRow: View {
     @State var achievement: String
     var body: some View {
         HStack {
-//            VStack {
-//                if achievement.contains("Newbie") {
-//                    Text("10")
-//
-//                } else if achievement.contains("Good try") {
-//                    Text("30")
-//
-//                } else if achievement.contains("Half way") {
-//                    Text("50")
-//
-//                } else if achievement == "80 is so LIT" {
-//                    Text("80")
-//
-//                } else if achievement == "Sweepar god" {
-//                    Text("100")
-//                }
-//            }
-//            .padding()
-//            .frame(width: 50, height: 50)
-//            .background(Color("neonGreen"))
-//            .clipShape(RoundedRectangle(cornerRadius: 8))
+            Spacer()
+            VStack {
+                Text(convertAchievementToScore(achievement: achievement))
+            }
+            .frame(width: 40, height: 40)
+            .padding()
+            .background(Color("neonGreen"))
+            .clipShape(RoundedRectangle(cornerRadius: 8))
+            .padding(.trailing, 8)
+            Spacer()
             Text("/ \(achievement) /")
                 .fontWeight(.bold)
-                .padding()
+            Spacer()
         }
         .padding()
+    }
+    
+    func convertAchievementToScore(achievement: String) -> String {
+        if achievement.contains("Newbie") {
+            return "10"
+        } else if achievement.contains("Good try") {
+            return "30"
+        } else if achievement.contains("Half way") {
+            return "50"
+        } else if achievement == "80 is so LIT" {
+            return "80"
+        } else if achievement == "Sweepar god" {
+            return "100"
+        }
+        return ""
     }
 }
 

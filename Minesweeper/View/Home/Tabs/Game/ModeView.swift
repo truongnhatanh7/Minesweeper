@@ -75,9 +75,9 @@ struct ModeView: View {
             }
             .frame(
                   minWidth: 0,
-                  maxWidth: .infinity,
+                  maxWidth: 1024,
                   minHeight: 0,
-                  maxHeight: .infinity,
+                  maxHeight: 1366,
                   alignment: .center
                 )
             .transition(.opacity)

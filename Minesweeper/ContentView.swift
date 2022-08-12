@@ -9,10 +9,15 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        NavigationView {
-            HomeView()
-        }
-        .background(Color("background"))
+        HomeView()
+            .frame(
+                  minWidth: 0,
+                  maxWidth: 1024,
+                  minHeight: 0,
+                  maxHeight: 1366,
+                  alignment: .center
+                )
+            .background(Color("background"))
     }
 }
 
