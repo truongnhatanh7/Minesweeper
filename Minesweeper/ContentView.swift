@@ -1,27 +1,29 @@
-//
-//  ContentView.swift
-//  Minesweeper
-//
-//  Created by Truong Nhat Anh on 07/08/2022.
-//
+/*
+ RMIT University Vietnam
+ Course: COSC2659 iOS Development
+ Semester: 2022B
+ Assessment: Assignment 2
+ Author: Truong Nhat Anh
+ ID: 3878231
+ Created date: 10/08/2022
+ Last modified: dd/mm/yyyy 11/08/2022
+ Acknowledgement: COSC2659 Lecture slides, hackingwithswift.com, stackoverflow.com, minesweepergame.com
+ */
 
 import SwiftUI
 
 struct ContentView: View {
     @EnvironmentObject var game: Game
     var body: some View {
-        GeometryReader { bound in
-            HomeView()
-                .frame(
-                    minWidth: game.settings.minWidth,
-                      maxWidth: 1024,
-                    minHeight: game.settings.minHeight,
-                      maxHeight: 1366,
-                      alignment: .center
-                    )
-                .background(Color("background"))
-        }
-
+        HomeView()
+            .frame(
+                minWidth: game.settings.minWidth,
+                maxWidth: game.settings.maxWidth,
+                minHeight: game.settings.minHeight,
+                maxHeight: game.settings.maxHeight,
+                  alignment: .center
+                )
+            .background(Color("background"))
     }
 }
 

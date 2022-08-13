@@ -1,9 +1,15 @@
-//
-//  Cell.swift
-//  Minesweeper
-//
-//  Created by Truong Nhat Anh on 07/08/2022.
-//
+/*
+ RMIT University Vietnam
+ Course: COSC2659 iOS Development
+ Semester: 2022B
+ Assessment: Assignment 2
+ Author: Truong Nhat Anh
+ ID: 3878231
+ Created date: 10/08/2022
+ Last modified: dd/mm/yyyy 11/08/2022
+ Acknowledgement: COSC2659 Lecture slides, hackingwithswift.com, stackoverflow.com, minesweepergame.com
+ */
+
 import SwiftUI
 import Foundation
 import RealmSwift
@@ -16,6 +22,15 @@ class Cell: ObservableObject {
     @Published var isOpened: Bool
     @Published var isFlagged: Bool
     @Published var currentBombs: Int
+    
+    init (row: Int, column: Int) {
+        self.row = row
+        self.col = column
+        self.status = .normal
+        self.isOpened = false
+        self.isFlagged = false
+        self.currentBombs = 0
+    }
     
     var image: Image {
         if !isOpened && isFlagged {
@@ -44,16 +59,6 @@ class Cell: ObservableObject {
         }
         
     }
-    
-    init (row: Int, column: Int) {
-        self.row = row
-        self.col = column
-        self.status = .normal
-        self.isOpened = false
-        self.isFlagged = false
-        self.currentBombs = 0
-    }
-    
     
 }
 

@@ -1,9 +1,14 @@
-//
-//  Game.swift
-//  Minesweeper
-//
-//  Created by Truong Nhat Anh on 07/08/2022.
-//
+/*
+ RMIT University Vietnam
+ Course: COSC2659 iOS Development
+ Semester: 2022B
+ Assessment: Assignment 2
+ Author: Truong Nhat Anh
+ ID: 3878231
+ Created date: 10/08/2022
+ Last modified: dd/mm/yyyy 11/08/2022
+ Acknowledgement: COSC2659 Lecture slides, hackingwithswift.com, stackoverflow.com, minesweepergame.com
+ */
 
 import Foundation
 import SwiftUI
@@ -25,7 +30,7 @@ class Game: ObservableObject {
     @Published var localRealm: Realm?
     @Published var currentUserId: ObjectId
     @Published var canContinue: Bool
-
+    
     
     // MARK: Init
     init (settings: GameSettings) {
@@ -120,6 +125,7 @@ class Game: ObservableObject {
             newBoard.append(column)
         }
         
+        // Generate random bombs
         var currentBombs = 0
         while currentBombs < numBombs {
             let randRow = Int.random(in: 0..<settings.numRows)
@@ -135,7 +141,8 @@ class Game: ObservableObject {
         self.board = newBoard
         settings.isProcessing = false
         
-        // For win hack
+        // For debugging winning condition
+        print("Underlying board: ")
         for row in 0..<10 {
             for col in 0..<10 {
                 if board[row][col].status == .bomb {
@@ -211,6 +218,7 @@ class Game: ObservableObject {
         return false
     }
     
+    // MARK: Update high score
     private func updateHighscore() {
         do {
             try localRealm?.write({
@@ -225,6 +233,7 @@ class Game: ObservableObject {
     
     // MARK: Get num count
     private func getOpenedCount(cell: Cell) -> Int {
+        // Explore surroundings with (+-1) step
         let row = cell.row
         let col = cell.col
         
@@ -302,7 +311,7 @@ class Game: ObservableObject {
         }
     }
     
-
+    
     
     // MARK: Toggle flag
     func toggleFlag(cell: Cell) {
@@ -322,16 +331,18 @@ class Game: ObservableObject {
     }
 }
 
+
+// Realm related
 extension Game {
     // MARK: Set up realm
     func openRealm() {
         do {
             let config = Realm.Configuration(schemaVersion: 1, migrationBlock: { migration, oldSchemaVersion in
                 if oldSchemaVersion > 1 {
-                    // Do something, usually updating the schema's variables here
+                    // Do nothing
                 }
             })
-
+            
             Realm.Configuration.defaultConfiguration = config
             localRealm = try Realm()
         } catch {
@@ -348,9 +359,9 @@ extension Game {
                     user.username = username
                     user.password = password
                     user.canContinue = false
-                    for row in 0..<10 {
+                    for row in 0..<board.count {
                         user.prevBoard.append(PrevBoardRow())
-                        for col in 0..<10 {
+                        for col in 0..<board[0].count {
                             let cell = PersistedCell()
                             cell.row = row
                             cell.col = col
@@ -409,7 +420,7 @@ extension Game {
                 print("Error write file ", error)
             }
         }
-
+        
     }
     
     // MARK: Set continue state

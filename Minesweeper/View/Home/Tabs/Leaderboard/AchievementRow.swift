@@ -1,9 +1,14 @@
-//
-//  AchievementRow.swift
-//  Minesweeper
-//
-//  Created by Truong Nhat Anh on 12/08/2022.
-//
+/*
+ RMIT University Vietnam
+ Course: COSC2659 iOS Development
+ Semester: 2022B
+ Assessment: Assignment 2
+ Author: Truong Nhat Anh
+ ID: 3878231
+ Created date: 10/08/2022
+ Last modified: dd/mm/yyyy 11/08/2022
+ Acknowledgement: COSC2659 Lecture slides, hackingwithswift.com, stackoverflow.com, minesweepergame.com
+ */
 
 import SwiftUI
 
@@ -26,15 +31,15 @@ struct AchievementRow: View {
             Text("/ \(achievement) /")
                 .fontWeight(.bold)
         }.padding()
-        .overlay(
-            RoundedRectangle(cornerRadius: 8)
-                .stroke(Color("text"), lineWidth: 2)
-        )
-        .padding(.horizontal, 68)
-        .padding(2)
+            .overlay(
+                RoundedRectangle(cornerRadius: 8)
+                    .stroke(Color("text"), lineWidth: 2)
+            )
+            .padding(.horizontal, 68)
+            .padding(2)
     }
     
-    func convertAchievementToScore(achievement: String) -> String {
+    private func convertAchievementToScore(achievement: String) -> String {
         if achievement.contains("Newbie") {
             return "10"
         } else if achievement.contains("Good try") {

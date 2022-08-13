@@ -1,9 +1,14 @@
-//
-//  GameSettings.swift
-//  Minesweeper
-//
-//  Created by Truong Nhat Anh on 07/08/2022.
-//
+/*
+ RMIT University Vietnam
+ Course: COSC2659 iOS Development
+ Semester: 2022B
+ Assessment: Assignment 2
+ Author: Truong Nhat Anh
+ ID: 3878231
+ Created date: 10/08/2022
+ Last modified: dd/mm/yyyy 11/08/2022
+ Acknowledgement: COSC2659 Lecture slides, hackingwithswift.com, stackoverflow.com, minesweepergame.com
+ */
 
 import Foundation
 import SwiftUI
@@ -14,6 +19,8 @@ class GameSettings: ObservableObject {
     @Published var numCols = 10
     @Published var numBombs = 10
     @Published var isProcessing = false
+    // minWidth, minHeight is created for mac catalyst to created default bounds for preserving layouts
+    // maxWidth, maxHeight is based on iPad Pro 12inch size
     var minWidth: CGFloat {
         #if targetEnvironment(macCatalyst)
         return 1024.0
@@ -28,6 +35,8 @@ class GameSettings: ObservableObject {
         return 0.0
         #endif
     }
+    var maxWidth: CGFloat = 1024
+    var maxHeight: CGFloat = 1366
     var squareModifer = 0.0
     var squareSize: CGFloat {
         #if targetEnvironment(macCatalyst)
