@@ -61,8 +61,8 @@ struct ModeView: View {
                     
                     if game.canContinue {
                         Button {
-                            isPlaying = true
                             game.initializePrevBoard()
+                            isPlaying = true
                         } label: {
                             Text("Continue")
                         }

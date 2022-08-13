@@ -86,9 +86,8 @@ class Game: ObservableObject {
             }
             self.board = newBoard
             revealPrevCells(user: user, newBoard: newBoard)
-            setContinueState(value: false)
         }
-        
+        setContinueState(value: false)
         settings.isProcessing = false
     }
     
@@ -183,14 +182,14 @@ class Game: ObservableObject {
             
             isLose = true
             updateHighscore()
-            
         } else {
             audioManager.playSounds(soundfile: "touch", type: ".wav", repeatNum: 0)
             revealCell(cell: cell)
             addMove(cell: cell)
             isWin = checkGameCondition()
+            
         }
-        
+        handleAddAchievement()
         self.objectWillChange.send()
     }
     
@@ -266,7 +265,6 @@ class Game: ObservableObject {
         cell.currentBombs = openedCount
         cell.isOpened = true
         score += 1
-        handleAddAchievement()
         
         // If empty -> keep exploring surroundings cells
         if openedCount == 0 {
@@ -283,23 +281,27 @@ class Game: ObservableObject {
             try localRealm?.write({
                 let user = localRealm?.object(ofType: User.self, forPrimaryKey: currentUserId)
                 if let user = user {
-                    if score == 10 {
+                    if user.highscore >= 10 {
                         if !user.achievements.contains("Newbie") {
                             user.achievements.append("Newbie")
                         }
-                    } else if score == 30 {
+                    }
+                    if user.highscore >= 30 {
                         if !user.achievements.contains("Good try") {
                             user.achievements.append("Good try")
                         }
-                    } else if score == 50 {
+                    }
+                    if user.highscore >= 50 {
                         if !user.achievements.contains("Half way") {
                             user.achievements.append("Half way")
                         }
-                    } else if score == 80 {
+                    }
+                    if user.highscore >= 80 {
                         if !user.achievements.contains("80 is so LIT") {
                             user.achievements.append("80 is so LIT")
                         }
-                    } else if score >= 100 {
+                    }
+                    if user.highscore >= 100 {
                         if !user.achievements.contains("Sweepar god") {
                             user.achievements.append("Sweepar god")
                         }
@@ -359,9 +361,9 @@ extension Game {
                     user.username = username
                     user.password = password
                     user.canContinue = false
-                    for row in 0..<board.count {
+                    for row in 0..<10 {
                         user.prevBoard.append(PrevBoardRow())
-                        for col in 0..<board[0].count {
+                        for col in 0..<10 {
                             let cell = PersistedCell()
                             cell.row = row
                             cell.col = col
