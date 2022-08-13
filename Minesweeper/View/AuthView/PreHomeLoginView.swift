@@ -18,6 +18,7 @@ struct PreHomeLoginView: View {
     @State var password: String = ""
     @Binding var viewManipulation: Int
     @EnvironmentObject var game: Game
+    @State private var showAlert = false
     
     var body: some View {
         
@@ -51,8 +52,10 @@ struct PreHomeLoginView: View {
                         game.currentUsername = user.username
                         game.canContinue = user.canContinue
                         viewManipulation = 3
+                        return
                     }
                 }
+                showAlert = true
             } label: {
                 Text("Login")
                     .foregroundColor(.black)
@@ -63,7 +66,9 @@ struct PreHomeLoginView: View {
                 
             }
             .padding()
-            
+        }
+        .alert("Wrong information", isPresented: $showAlert) {
+            Button("OK", role: .cancel) {}
         }
     }
 }

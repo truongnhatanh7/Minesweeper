@@ -18,6 +18,7 @@ struct PreHomeRegisterView: View {
     @State var canNavigate: Bool = false
     @Binding var viewManipulation: Int
     @EnvironmentObject var game: Game
+    @State private var showAlert = false
     
     var body: some View {
         
@@ -43,12 +44,10 @@ struct PreHomeRegisterView: View {
                     .foregroundColor(Color("text"))
             }
             
-            
             Button {
                 for user in game.getUsers() {
                     if user.username == self.username {
-                        // TODO: Warn collapsed username
-                        print("collapsed")
+                        showAlert = true
                         return
                     }
                 }
@@ -67,6 +66,9 @@ struct PreHomeRegisterView: View {
             }
             .padding()
             
+        }
+        .alert("This username is already existed", isPresented: $showAlert) {
+            Button("OK", role: .cancel) {}
         }
     }
 }
