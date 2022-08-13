@@ -14,6 +14,7 @@ struct HelpView: View {
                 .font(.largeTitle)
                 .fontWeight(.bold)
                 .foregroundColor(Color("text"))
+                .padding()
             Spacer()
             WebView(url: URL(string: "https://minesweepergame.com/strategy/how-to-play-minesweeper.php#:~:text=Minesweeper%20is%20a%20game%20where,mine%20you%20lose%20the%20game!")!)
                 .clipShape(RoundedRectangle(cornerRadius: 8))

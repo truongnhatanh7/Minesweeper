@@ -95,13 +95,10 @@ struct GameView: View {
             }
             
         }
-        .onAppear() {
-            game.backgroundAudioManager.playSounds(soundfile: "gameBackground", type: ".mp3", repeatNum: -1)
-        }
+
         .onDisappear() {
             game.backgroundAudioManager.playSounds(soundfile: "homebackground", type: ".mp3", repeatNum: -1)
         }
-        
     }
 }
 

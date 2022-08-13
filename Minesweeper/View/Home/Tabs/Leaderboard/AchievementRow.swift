@@ -11,9 +11,11 @@ struct AchievementRow: View {
     @State var achievement: String
     var body: some View {
         HStack {
-            Spacer()
             VStack {
                 Text(convertAchievementToScore(achievement: achievement))
+                    .italic()
+                    .foregroundColor(.black)
+                    .fontWeight(.bold)
             }
             .frame(width: 40, height: 40)
             .padding()
@@ -23,9 +25,13 @@ struct AchievementRow: View {
             Spacer()
             Text("/ \(achievement) /")
                 .fontWeight(.bold)
-            Spacer()
-        }
-        .padding()
+        }.padding()
+        .overlay(
+            RoundedRectangle(cornerRadius: 8)
+                .stroke(Color("text"), lineWidth: 2)
+        )
+        .padding(.horizontal, 68)
+        .padding(2)
     }
     
     func convertAchievementToScore(achievement: String) -> String {

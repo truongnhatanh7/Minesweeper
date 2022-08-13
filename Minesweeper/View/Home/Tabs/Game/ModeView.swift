@@ -22,6 +22,7 @@ struct ModeView: View {
                 Text("Hi \(game.currentUsername)".uppercased())
                     .font(.title)
                     .fontWeight(.bold)
+                    .padding()
                 Spacer()
                 VStack(spacing: 14) {
                     Spacer()

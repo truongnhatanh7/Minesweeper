@@ -27,6 +27,7 @@
 		5543734C28A67D69004E4BEE /* Move.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5543734B28A67D69004E4BEE /* Move.swift */; };
 		5543734E28A67D93004E4BEE /* PrevBoardRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5543734D28A67D93004E4BEE /* PrevBoardRow.swift */; };
 		5543735028A68185004E4BEE /* AchievementRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5543734F28A68185004E4BEE /* AchievementRow.swift */; };
+		5543735328A76CA7004E4BEE /* StyledCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5543735228A76CA7004E4BEE /* StyledCellView.swift */; };
 		556D475F289F9BC200D3C459 /* MinesweeperApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 556D475E289F9BC200D3C459 /* MinesweeperApp.swift */; };
 		556D4761289F9BC200D3C459 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 556D4760289F9BC200D3C459 /* ContentView.swift */; };
 		556D4763289F9BC700D3C459 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 556D4762289F9BC700D3C459 /* Assets.xcassets */; };
@@ -62,6 +63,7 @@
 		5543734D28A67D93004E4BEE /* PrevBoardRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrevBoardRow.swift; sourceTree = "<group>"; };
 		5543734F28A68185004E4BEE /* AchievementRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementRow.swift; sourceTree = "<group>"; };
 		5543735128A6AC08004E4BEE /* Minesweeper.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Minesweeper.entitlements; sourceTree = "<group>"; };
+		5543735228A76CA7004E4BEE /* StyledCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StyledCellView.swift; sourceTree = "<group>"; };
 		556D475B289F9BC200D3C459 /* Minesweeper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Minesweeper.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		556D475E289F9BC200D3C459 /* MinesweeperApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MinesweeperApp.swift; sourceTree = "<group>"; };
 		556D4760289F9BC200D3C459 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -147,6 +149,7 @@
 				551BF43028A0F3F3008F1343 /* ModeView.swift */,
 				556D4771289FA50E00D3C459 /* GameView.swift */,
 				556D4779289FA79B00D3C459 /* CellView.swift */,
+				5543735228A76CA7004E4BEE /* StyledCellView.swift */,
 			);
 			path = Game;
 			sourceTree = "<group>";
@@ -365,6 +368,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5543735028A68185004E4BEE /* AchievementRow.swift in Sources */,
+				5543735328A76CA7004E4BEE /* StyledCellView.swift in Sources */,
 				556D4776289FA68B00D3C459 /* Game.swift in Sources */,
 				556D4774289FA5DB00D3C459 /* GameSettings.swift in Sources */,
 				556D4761289F9BC200D3C459 /* ContentView.swift in Sources */,
@@ -523,8 +527,9 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -555,8 +560,9 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

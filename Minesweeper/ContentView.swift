@@ -8,16 +8,20 @@
 import SwiftUI
 
 struct ContentView: View {
+    @EnvironmentObject var game: Game
     var body: some View {
-        HomeView()
-            .frame(
-                  minWidth: 0,
-                  maxWidth: 1024,
-                  minHeight: 0,
-                  maxHeight: 1366,
-                  alignment: .center
-                )
-            .background(Color("background"))
+        GeometryReader { bound in
+            HomeView()
+                .frame(
+                    minWidth: game.settings.minWidth,
+                      maxWidth: 1024,
+                    minHeight: game.settings.minHeight,
+                      maxHeight: 1366,
+                      alignment: .center
+                    )
+                .background(Color("background"))
+        }
+
     }
 }
 

@@ -12,12 +12,15 @@ struct AchievementView: View {
     @Binding var leaderboardViewManipulation: Int
     var body: some View {
         VStack {
-            
-            Text("GO BACK")
-                .italic()
-                .foregroundColor(Color("neonGreen"))
-                .fontWeight(.bold)
-                .padding()
+            Button  {
+                leaderboardViewManipulation = 0
+            } label: {
+                Text("GO BACK")
+                    .italic()
+                    .foregroundColor(Color("neonGreen"))
+                    .fontWeight(.bold)
+                    .padding()
+            }
             
             Text("ACHIEVEMENTS")
                 .font(.largeTitle)
