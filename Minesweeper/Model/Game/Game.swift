@@ -175,7 +175,7 @@ class Game: ObservableObject {
             }
             
             isLose = true
-            // TODO: Handle lose condition
+            updateHighscore()
             
         } else {
             audioManager.playSounds(soundfile: "touch", type: ".wav", repeatNum: 0)
@@ -204,10 +204,23 @@ class Game: ObservableObject {
             }
             if validCellCount == settings.numBombs && openedCells == settings.numRows * settings.numCols - settings.numBombs {
                 score = 100 + settings.numBombs
+                updateHighscore()
                 return true
             }
         }
         return false
+    }
+    
+    private func updateHighscore() {
+        do {
+            try localRealm?.write({
+                if let user = localRealm?.object(ofType: User.self, forPrimaryKey: currentUserId) {
+                    user.highscore = max(self.score, user.highscore)
+                }
+            })
+        } catch {
+            print(error)
+        }
     }
     
     // MARK: Get num count
@@ -277,7 +290,7 @@ class Game: ObservableObject {
                         if !user.achievements.contains("80 is so LIT") {
                             user.achievements.append("80 is so LIT")
                         }
-                    } else if score == 100 {
+                    } else if score >= 100 {
                         if !user.achievements.contains("Sweepar god") {
                             user.achievements.append("Sweepar god")
                         }
@@ -423,7 +436,6 @@ extension Game {
                         move.row = cell.row
                         move.col = cell.col
                         user.moveHistory.append(move)
-                        user.highscore = self.score
                     }
                 }
             }

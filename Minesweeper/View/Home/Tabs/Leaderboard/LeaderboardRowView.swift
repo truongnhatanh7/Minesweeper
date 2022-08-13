@@ -12,20 +12,22 @@ struct LeaderboardRowView: View {
     @Binding var currentUser: User
     @Binding var leaderboardViewManipulation: Int
     var body: some View {
-        HStack {
-            Text("\(user.username)")
-            Spacer()
-            Text("\(user.highscore)")
-        }
-        .padding()
-        .overlay(
-            RoundedRectangle(cornerRadius: 5.0)
-                .stroke(Color("text"), lineWidth: 1)
-        )
-        .onTapGesture {
-            // TODO: Display achievement view
+        Button  {
             currentUser = user
             leaderboardViewManipulation = 1
+        } label: {
+            HStack {
+                Text("\(user.username)")
+                    .foregroundColor(Color("text"))
+                Spacer()
+                Text("\(user.highscore)")
+                    .foregroundColor(Color("text"))
+            }
+            .padding()
+            .overlay(
+                RoundedRectangle(cornerRadius: 5.0)
+                    .stroke(Color("text"), lineWidth: 1)
+            )
         }
     }
 }
