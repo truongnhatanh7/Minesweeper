@@ -56,6 +56,7 @@ class Game: ObservableObject {
         self.isWin = false
         var newBoard = [[Cell]]()
         self.score = 0
+        self.flagCount = 0
         self.settings.numBombs = 0
         
         // Init board
@@ -115,6 +116,7 @@ class Game: ObservableObject {
         self.isWin = false
         var newBoard = [[Cell]]()
         self.score = 0
+        self.flagCount = 0
         
         for row in 0..<settings.numRows {
             var column = [Cell]()
