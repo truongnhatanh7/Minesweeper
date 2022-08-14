@@ -6,7 +6,7 @@
  Author: Truong Nhat Anh
  ID: 3878231
  Created date: 10/08/2022
- Last modified: dd/mm/yyyy 11/08/2022
+ Last modified: 11/08/2022
  Acknowledgement: COSC2659 Lecture slides, hackingwithswift.com, stackoverflow.com, minesweepergame.com
  */
 
