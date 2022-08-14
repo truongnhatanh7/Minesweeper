@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5508BC1E28A7943D00FC2FCA /* background.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 5508BC1D28A7943D00FC2FCA /* background.mp3 */; };
+		5508BC2028A7944600FC2FCA /* gameBackground.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 5508BC1F28A7944600FC2FCA /* gameBackground.mp3 */; };
 		551BF42B28A0E387008F1343 /* bomb.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 551BF42A28A0E387008F1343 /* bomb.mp3 */; };
 		551BF42D28A0E38C008F1343 /* flag.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 551BF42C28A0E38C008F1343 /* flag.mp3 */; };
 		551BF43128A0F3F3008F1343 /* ModeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 551BF43028A0F3F3008F1343 /* ModeView.swift */; };
@@ -38,11 +40,11 @@
 		556D477A289FA79B00D3C459 /* CellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 556D4779289FA79B00D3C459 /* CellView.swift */; };
 		556D478228A0BF0D00D3C459 /* touch.wav in Resources */ = {isa = PBXBuildFile; fileRef = 556D478128A0BF0D00D3C459 /* touch.wav */; };
 		556D478428A0BF1C00D3C459 /* AudioManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 556D478328A0BF1C00D3C459 /* AudioManager.swift */; };
-		556D478628A0C11100D3C459 /* background1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 556D478528A0C11100D3C459 /* background1.mp3 */; };
-		556D478828A0D1D400D3C459 /* gameBackground.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 556D478728A0D1D400D3C459 /* gameBackground.mp3 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5508BC1D28A7943D00FC2FCA /* background.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = background.mp3; sourceTree = "<group>"; };
+		5508BC1F28A7944600FC2FCA /* gameBackground.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = gameBackground.mp3; sourceTree = "<group>"; };
 		551BF42A28A0E387008F1343 /* bomb.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = bomb.mp3; sourceTree = "<group>"; };
 		551BF42C28A0E38C008F1343 /* flag.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = flag.mp3; sourceTree = "<group>"; };
 		551BF43028A0F3F3008F1343 /* ModeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModeView.swift; sourceTree = "<group>"; };
@@ -74,8 +76,6 @@
 		556D4779289FA79B00D3C459 /* CellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellView.swift; sourceTree = "<group>"; };
 		556D478128A0BF0D00D3C459 /* touch.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = touch.wav; sourceTree = "<group>"; };
 		556D478328A0BF1C00D3C459 /* AudioManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioManager.swift; sourceTree = "<group>"; };
-		556D478528A0C11100D3C459 /* background1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = background1.mp3; sourceTree = "<group>"; };
-		556D478728A0D1D400D3C459 /* gameBackground.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = gameBackground.mp3; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -274,10 +274,10 @@
 			isa = PBXGroup;
 			children = (
 				556D478128A0BF0D00D3C459 /* touch.wav */,
-				556D478528A0C11100D3C459 /* background1.mp3 */,
+				5508BC1F28A7944600FC2FCA /* gameBackground.mp3 */,
 				551BF42A28A0E387008F1343 /* bomb.mp3 */,
+				5508BC1D28A7943D00FC2FCA /* background.mp3 */,
 				551BF42C28A0E38C008F1343 /* flag.mp3 */,
-				556D478728A0D1D400D3C459 /* gameBackground.mp3 */,
 			);
 			path = Sounds;
 			sourceTree = "<group>";
@@ -348,10 +348,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				556D4766289F9BC700D3C459 /* Preview Assets.xcassets in Resources */,
-				556D478828A0D1D400D3C459 /* gameBackground.mp3 in Resources */,
 				551BF42B28A0E387008F1343 /* bomb.mp3 in Resources */,
+				5508BC2028A7944600FC2FCA /* gameBackground.mp3 in Resources */,
 				556D4763289F9BC700D3C459 /* Assets.xcassets in Resources */,
-				556D478628A0C11100D3C459 /* background1.mp3 in Resources */,
+				5508BC1E28A7943D00FC2FCA /* background.mp3 in Resources */,
 				556D478228A0BF0D00D3C459 /* touch.wav in Resources */,
 				551BF42D28A0E38C008F1343 /* flag.mp3 in Resources */,
 			);

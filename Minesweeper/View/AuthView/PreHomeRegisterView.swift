@@ -70,6 +70,9 @@ struct PreHomeRegisterView: View {
         .alert("This username is already existed", isPresented: $showAlert) {
             Button("OK", role: .cancel) {}
         }
+        .onAppear() {
+            game.backgroundAudioManager.clearSounds()
+        }
     }
 }
 

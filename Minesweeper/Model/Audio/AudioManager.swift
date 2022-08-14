@@ -28,4 +28,8 @@ class AudioManager {
                }
            }
     }
+    
+    func clearSounds() {
+        audioPlayer?.stop()
+    }
 }

@@ -43,10 +43,11 @@ struct GameView: View {
                                 .fontWeight(.bold)
                         }
                     }
+                    .padding()
                     
                     Spacer()
                     
-                    Text("BOMBS: \(game.settings.numBombs)")
+                    Text("\(game.settings.numBombs) BOMBS")
                         .font(.largeTitle)
                         .fontWeight(.bold)
                         .padding()
@@ -66,7 +67,7 @@ struct GameView: View {
                             .modifier(ButtonModifer())
                         
                     }
-                    .padding()
+                    .padding(.horizontal, 48)
                     
                     Spacer()
                     
@@ -94,15 +95,17 @@ struct GameView: View {
             }
         }
         .transition(.opacity)
+        .onAppear() {
+            game.backgroundAudioManager.playSounds(soundfile: "gameBackground", type: ".mp3", repeatNum: -1)
+        }
         .onReceive(NotificationCenter.default.publisher(for: UIApplication.didEnterBackgroundNotification)) { output in
             if !game.isLose {
                 game.saveStateBeforeExit(currentUsername: game.currentUsername, board: game.board)
             }
             
         }
-        
         .onDisappear() {
-            game.backgroundAudioManager.playSounds(soundfile: "homebackground", type: ".mp3", repeatNum: -1)
+            game.backgroundAudioManager.playSounds(soundfile: "background", type: ".mp3", repeatNum: -1)
         }
     }
 }

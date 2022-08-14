@@ -70,6 +70,9 @@ struct PreHomeLoginView: View {
         .alert("Wrong information", isPresented: $showAlert) {
             Button("OK", role: .cancel) {}
         }
+        .onAppear() {
+            game.backgroundAudioManager.clearSounds()
+        }
     }
 }
 
