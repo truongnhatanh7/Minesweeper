@@ -51,8 +51,7 @@ struct LeaderboardView: View {
                 AchievementView(user: self.user, leaderboardViewManipulation: $leaderboardViewManipulation)
             }
             Spacer()
-        }
-        
+        }        
     }
 }
 

@@ -48,7 +48,6 @@ struct HomeView: View {
             .onAppear() {
                 game.backgroundAudioManager.playSounds(soundfile: "background", type: ".mp3", repeatNum: -1)
             }
-            
         }
     }
 }

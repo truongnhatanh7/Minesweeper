@@ -87,6 +87,17 @@ struct ModeView: View {
                 alignment: .center
             )
             .transition(.opacity)
+            .onAppear() {
+                let isPlaying = game.backgroundAudioManager.audioPlayer?.isPlaying ?? false
+                let fileName = game.backgroundAudioManager.audioPlayer?.url?.relativePath
+                if let fileNameCheck = fileName?.contains("background") {
+                    if isPlaying && !fileNameCheck {
+                        game.backgroundAudioManager.playSounds(soundfile: "background", type: ".mp3", repeatNum: -1)
+                    }
+                } else {
+                    game.backgroundAudioManager.playSounds(soundfile: "background", type: ".mp3", repeatNum: -1)
+                }
+            }
         }
     }
 }

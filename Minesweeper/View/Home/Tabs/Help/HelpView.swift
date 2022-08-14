@@ -13,6 +13,7 @@
 import SwiftUI
 
 struct HelpView: View {
+    @EnvironmentObject var game: Game
     var body: some View {
         VStack {
             Text("HELP")

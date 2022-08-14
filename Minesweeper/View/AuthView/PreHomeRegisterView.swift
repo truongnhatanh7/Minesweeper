@@ -71,7 +71,15 @@ struct PreHomeRegisterView: View {
             Button("OK", role: .cancel) {}
         }
         .onAppear() {
-            game.backgroundAudioManager.clearSounds()
+            let isPlaying = game.backgroundAudioManager.audioPlayer?.isPlaying ?? false
+            let fileName = game.backgroundAudioManager.audioPlayer?.url?.relativePath
+            if let fileNameCheck = fileName?.contains("background") {
+                if isPlaying && fileNameCheck {
+                    game.backgroundAudioManager.playSounds(soundfile: "auth", type: ".mp3", repeatNum: -1)
+                }
+            } else {
+                game.backgroundAudioManager.playSounds(soundfile: "auth", type: ".mp3", repeatNum: -1)
+            }
         }
     }
 }

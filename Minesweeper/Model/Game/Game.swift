@@ -185,10 +185,15 @@ class Game: ObservableObject {
             isLose = true
             updateHighscore()
         } else {
-            audioManager.playSounds(soundfile: "touch", type: ".wav", repeatNum: 0)
+            
             revealCell(cell: cell)
             addMove(cell: cell)
             isWin = checkGameCondition()
+            if isWin {
+                backgroundAudioManager.playSounds(soundfile: "win", type: ".mp3", repeatNum: -1)
+            } else {
+                audioManager.playSounds(soundfile: "touch", type: ".mp3", repeatNum: 0)
+            }
             
         }
         handleAddAchievement()

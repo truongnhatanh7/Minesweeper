@@ -37,6 +37,7 @@ struct GameView: View {
                             game.flagCount = 0
                             game.isWin = false
                             game.isLose = false
+                            game.backgroundAudioManager.playSounds(soundfile: "gameBackground", type: ".mp3", repeatNum: -1)
                         } label: {
                             Text("RESTART")
                                 .italic()
